@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gentelella Alela! | </title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/custom_change.css" rel="stylesheet">
+
+  <style type="text/css">
+    .flat {
+      padding-right: 10px;
+    }
+
+    #skulist .hide {
+      display: none !important;
+    }
+
+    .product-radio,
+    .product-checkbox {
+      margin-top: 8px;
+    }
+
+    .product-radio .radio-item,
+    .product-checkbox .checkbox-item {
+
+      margin-right: 10px;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script>
+
+    function addSkuHtml() {
+      var skuHtml = ''
+      var currentSizeCount = 0;
+      var sizeCount = 0;
+      $('#skulist').html(skuHtml);
+      $(":checkbox[name='size']:checked").each(function () {
+        sizeCount++;
+      });
+
+      if (sizeCount == 0) {
+        return;
+      };
+
+      $(":checkbox[name='color']:checked").each(function () {
+        var selectColor = $(this).val();
+        currentSizeCount = 0;
+        $(":checkbox[name='size']:checked").each(function () {
+          currentSizeCount++;
+          var selectSize = $(this).val();
+          if (currentSizeCount > 1) {
+            skuHtml += '<tr><td class=\'hide\'>' + selectColor + '</td><td>' + selectSize + '</td><td><input type="text" value="0" name="price" ></td><td><input type="text" value="0" name="stock" ></td></tr>';
+          } else {
+            skuHtml += '<tr><td rowspan=' + sizeCount + '>' + selectColor + '</td><td>' + selectSize + '</td><td><input type="text" value="0" name="price" ></td><td><input type="text" value="0" name="stock" ></td></tr>';
+          }
+        });
+      });
+      $('#skulist').html(skuHtml);
+    };
+
+    $(function () {
+      $("#product-submit").click(function () {
+        var skus = [];
+        var productAttr = [];
+        var colorid = $("#colorlist").attr("data-id");
+        var sizeid = $("#sizelist").attr("data-id");
+        $('#skulist tr').each(function () {
+          var color = $(this).find('.sku-item-color').attr('data-color');
+          var size = $(this).find('.sku-item-size').attr('data-size');
+          skus.push({
+            "Properties": colorid + ":" + color + ";" + sizeid + ":" + size,
+            "Price": $(this).find('.sku-item-price input').val(),
+            "Stock": $(this).find('.sku-item-stock input').val()
+          });
+
+          // 插入颜色
+          $(":checkbox[name='color']:checked").each(function () {
+            productAttr.push({
+              "AttrID": colorid,
+              "AttrValueID": $(this).val()
+            });
+          });
+
+          // 插入尺码
+          $(":checkbox[name='size']:checked").each(function () {
+            productAttr.push({
+              "AttrID": sizeid,
+              "AttrValueID": $(this).val()
+            });
+          });
+
+        });
+        $("#ProductAttr").val(skus.toString());
+        //alert(skus.toString());
+
+      });
+    });
+  </script>
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>基础信息 <small>必填的哦</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+
+                    <div class="form-group">
+                                             <input type="hidden" name="country" value="China" id="ProductAttr" />
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择商品类别</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="heard" class="form-control col-md-7 col-xs-12"
+                          data-parsley-required-message="请选择所属大类" required>
+                          <option value="">Choose..</option>
+                          <option value="press">Press</option>
+                          <option value="net">Internet</option>
+                          <option value="mouth">Word of mouth</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择商品小类</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="heard" class="form-control col-md-7 col-xs-12"
+                          data-parsley-required-message="请选择所属大类" required>
+                          <option value="">Choose..</option>
+                          <option value="press">Press</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">商品名称 <span
+                          class="required">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" id="first-name" required="required" data-parsley-required-message="商品名称不可为空"
+                          placeholder="最多允许输入30个汉字" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>销售信息 <small>没有的颜色和尺码，请到颜色和尺码管理中添加</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12" id="colorlist"
+                        data-id="1">颜色</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="product-checkbox">
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="color" value="1" class="flat" onclick="addSkuHtml()" /> 红色
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="color" value="2" class="flat" onclick="addSkuHtml()" /> 白色
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="color" value="3" class="flat" onclick="addSkuHtml()" /> 黑色
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="color" value="4" class="flat" onclick="addSkuHtml()" /> 黄色
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12" id="sizelist"
+                        data-id="2">尺码</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="product-checkbox">
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="5" class="flat" onclick="addSkuHtml()" /> S
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="6" class="flat" onclick="addSkuHtml()" /> L
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="7" class="flat" onclick="addSkuHtml()" /> XL
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="8" class="flat" onclick="addSkuHtml()" /> XXL
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">SKU组合</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>颜色</th>
+                              <th>尺码</th>
+                              <th>价格</th>
+                              <th>库存</th>
+                            </tr>
+                          </thead>
+                          <tbody id="skulist">
+
+                            <tr>
+                              <td class="sku-item-color" data-color="1">红色</td>
+                              <td class="sku-item-size" data-size="5">L</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="sku-item-color" data-color="2">黑色</td>
+                              <td class="sku-item-size" data-size="6">XL</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>商品描述<small>会直接展示在商品详情的界面</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="alerts"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>仓库售后 <small>用户下单后，会默认将订单配送到相应的印花厂和仓库</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择接单仓库</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="heard" class="form-control col-md-7 col-xs-12"
+                          data-parsley-required-message="请选择接单仓库" required>
+                          <option value="">Choose..</option>
+                          <option value="press">Press</option>
+                          <option value="net">Internet</option>
+                          <option value="mouth">Word of mouth</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择接单印花厂</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="heard" class="form-control col-md-7 col-xs-12"
+                          data-parsley-required-message="请选择接单印花厂" required>
+                          <option value="">Choose..</option>
+                          <option value="press">Press</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">上架时间 <span
+                          class="required">*</span>
+                      </label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="product-radio">
+                          <span class="radio-item">
+                            <input type="radio" class="flat" name="putaway" id="putawaynow" value="1" checked=""
+                              required />
+                            立刻上架</span>
+                          <span class="radio-item">
+                            <input type="radio" class="flat" name="putaway" id="putawayware" value="0" /> 放入仓库
+                          </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+                    <br />
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                      <button type="button" class="btn btn-primary">保存草稿</button>
+                      <button type="button" class="btn btn-success" id="product-submit">提交宝贝</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+  <!-- Parsley -->
+  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+</body>
+
+</html>

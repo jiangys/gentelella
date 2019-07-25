@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../pnotify/src/PNotifyBrightTheme.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+      <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../pnotify/lib/iife/PNotify.js"></script>
+    <script type="text/javascript" src="../pnotify/lib/iife/PNotifyButtons.js"></script>
+    <script type="text/javascript" src="../pnotify/lib/iife/PNotifyConfirm.js"></script>
+   
+
+    <script type="text/javascript">
+(function () {
+    function MsgBox() {
+        // 设置加载的样式及图片样式
+        PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3
+        PNotify.defaults.icons = 'bootstrap3'; // glyphicons fontawesome4
+
+        // 设置居中显示
+        if (typeof window.stackTopCenter === 'undefined') {
+            window.stackTopCenter = {
+                'dir1': 'down',
+                'firstpos1': 25
+            };
+        }
+
+        var delay = 2000;//显示时间
+        function showMsgInfo(msg) {
+            PNotify.info({ title: '温馨提示', text: msg, hide: true, delay: delay, stack: window.stackTopCenter });
+        }
+
+        function showMsgSuccess(msg) {
+            PNotify.success({ title: '成功拉', text: msg, hide: true, delay: delay, stack: window.stackTopCenter });
+        }
+
+        function showMsgNotice(msg) {
+            PNotify.notice({ title: '警告', text: msg, hide: true, delay: delay, stack: window.stackTopCenter });
+        }
+
+        function showMsgError(msg) {
+            PNotify.error({ title: '出错拉', text: msg, hide: true, delay: delay, stack: window.stackTopCenter });
+        }
+
+        function showConfirmDialog(msg, funcOk) {
+            PNotify.notice({
+                title: '请确认您的操作',
+                text: msg,
+                hide: false,
+                stack: window.stackTopCenter,
+                modules: {
+                    Confirm: {
+                        confirm: true,
+                        buttons: [{
+                            text: '确定',
+                            primary: true,
+                            click: function (notice) {
+                                if (funcOk) funcOk();
+                                notice.close();
+                            }
+                        }, {
+                            text: '取消',
+                            primary: false,
+                            click: function (notice) {
+                                notice.close();
+                            }
+                        }]
+                    },
+                    Buttons: {
+                        closer: false,
+                        sticker: false
+                    },
+                    History: {
+                        history: false
+                    },
+                }
+            });
+        };
+
+        this.showMsgInfo = function (msg) { showMsgInfo(msg) };
+        this.showMsgSuccess = function (msg) { showMsgSuccess(msg) };
+        this.showMsgNotice = function (msg) { showMsgNotice(msg) };
+        this.showMsgError = function (msg) { showMsgError(msg) };
+        this.showConfirmDialog = function (msg, funcOk) { showConfirmDialog(msg, funcOk) };
+    }
+    //$.extend($, { sayHi: function () { }});
+    //2.当dom树加载完毕后，为 $对象 添加一个 msgBoxObj 消息对象属性
+    $(function () {
+        $.extend($, {
+            msgBoxObj: new MsgBox()
+        });
+    });
+})();
+  </script>
+
+  </head>
+
+  <body class="login">
+    <div>
+      <div class="login_wrapper">
+    <div>
+      <button onclick="$.msgBoxObj.showMsgInfo('innfo拉');">dom</button>
+      <button onclick="$.msgBoxObj.showMsgNotice('showMsgNotice拉');">dom-showMsgNotice</button>
+      <button onclick="$.msgBoxObj.showMsgSuccess('showMsgSuccess拉');">dom-showMsgSuccess</button>
+      <button onclick="$.msgBoxObj.showMsgError('showMsgError');">dom-showMsgError</button>
+      <button onclick="$.msgBoxObj.showConfirmDialog('showConfirmDialog');">dom-showConfirmDialog</button>
+
+    </div>
+
+      </div>
+    </div>
+  </body>
+</html>
