@@ -22,6 +22,7 @@
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="../build/css/custom_change.css" rel="stylesheet">
+  
 
   <style type="text/css">
     .flat {
@@ -47,11 +48,16 @@
   <script src="../vendors/jquery/dist/jquery.min.js"></script>
   <script>
 
+$().ready(function() {
+ $("#product-form").parsley();
+});
+
     function addSkuHtml() {
       var skuHtml = ''
+      $('#skulist').html(skuHtml);
+
       var currentSizeCount = 0;
       var sizeCount = 0;
-      $('#skulist').html(skuHtml);
       $(":checkbox[name='size']:checked").each(function () {
         sizeCount++;
       });
@@ -61,23 +67,29 @@
       };
 
       $(":checkbox[name='color']:checked").each(function () {
-        var selectColor = $(this).val();
+        var selectColorId = $(this).val();
+        var selectColorName = $(this).attr('data-name');
         currentSizeCount = 0;
         $(":checkbox[name='size']:checked").each(function () {
           currentSizeCount++;
-          var selectSize = $(this).val();
+
+          skuHtml += '<tr>';
           if (currentSizeCount > 1) {
-            skuHtml += '<tr><td class=\'hide\'>' + selectColor + '</td><td>' + selectSize + '</td><td><input type="text" value="0" name="price" ></td><td><input type="text" value="0" name="stock" ></td></tr>';
+            skuHtml += '   <td class="sku-item-color hide" data-color="'+selectColorId+'">'+selectColorName+'</td>';
           } else {
-            skuHtml += '<tr><td rowspan=' + sizeCount + '>' + selectColor + '</td><td>' + selectSize + '</td><td><input type="text" value="0" name="price" ></td><td><input type="text" value="0" name="stock" ></td></tr>';
+            skuHtml += '   <td class="sku-item-color" rowspan='+ sizeCount +' data-color="'+selectColorId+'">'+selectColorName+'</td>';
           }
+          skuHtml += '   <td class="sku-item-size" data-size="'+$(this).val()+'">'+$(this).attr('data-name');+'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="0" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="0" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '</tr>';
         });
       });
       $('#skulist').html(skuHtml);
     };
 
     $(function () {
-      $("#product-submit").click(function () {
+      $("#product-submit11").click(function () {
         var skus = [];
         var productAttr = [];
         var colorid = $("#colorlist").attr("data-id");
@@ -85,34 +97,61 @@
         $('#skulist tr').each(function () {
           var color = $(this).find('.sku-item-color').attr('data-color');
           var size = $(this).find('.sku-item-size').attr('data-size');
+          // 插入SKU
           skus.push({
             "Properties": colorid + ":" + color + ";" + sizeid + ":" + size,
             "Price": $(this).find('.sku-item-price input').val(),
             "Stock": $(this).find('.sku-item-stock input').val()
           });
-
-          // 插入颜色
-          $(":checkbox[name='color']:checked").each(function () {
-            productAttr.push({
-              "AttrID": colorid,
-              "AttrValueID": $(this).val()
-            });
-          });
-
-          // 插入尺码
-          $(":checkbox[name='size']:checked").each(function () {
-            productAttr.push({
-              "AttrID": sizeid,
-              "AttrValueID": $(this).val()
-            });
-          });
-
         });
-        $("#ProductAttr").val(skus.toString());
-        //alert(skus.toString());
+        
+        // 插入颜色
+        $(":checkbox[name='color']:checked").each(function () {
+          productAttr.push({
+            "AttrID": colorid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+        // 插入尺码
+        $(":checkbox[name='size']:checked").each(function () {
+          productAttr.push({
+            "AttrID": sizeid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+
+        alert(JSON.stringify(skus));
+        // var data = $.param({"token":"token", "status":"status"}) + "&" + $("#product-form").serialize();
+        //   alert(data);
 
       });
+      //$("#ProductAttr").val(skus.toString());
+      //alert(skus.toString());
+
+      // });
     });
+
+    //提前定义好formData
+// var formData = ("#form").serialize();//获取所对应的form表单中的数据， //此时提交数据时，只是提交了表单中数据，如果需要额外数据的提交 //直接 formData['数据name'] = '数据值' 的方式即可。后再 submit 提交数据,,,,,^^^,即可^^^^^^^^^&*()
+// ("#form").serialize();//获取所对应的form表单中的数据， //此时提交数据时，只是提交了表单中数据，如果需要额外数据的提交 //直接 formData['数据name'] = '数据值' 的方式即可。后再 submit 提交数据,,,,,^^^,即可^^^^^^^^^&*()
+// .ajax({
+// url: options.url,
+// data:formData, 
+// type: "post",
+// dataType: "json",
+// success: function (data) {
+// if (data.state == "success") {
+// options.success(data);
+// .modalMsg(data.message, data.state);                          if (options.close == true) {
+// .modalMsg(data.message, data.state);                          if (options.close == true) {
+// .modalClose();
+// }
+// } else {
+// $.modalAlert(data.message, data.state);
+// }
+// }
   </script>
 
 </head>
@@ -124,7 +163,7 @@
         <div class="">
           <div class="row">
 
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form id="product-form" data-parsley-validate class="form-horizontal form-label-left">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -135,7 +174,7 @@
                     <br />
 
                     <div class="form-group">
-                                             <input type="hidden" name="country" value="China" id="ProductAttr" />
+                      <input type="hidden" name="country" value="China" id="ProductAttr" />
                       <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择商品类别</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <select id="heard" class="form-control col-md-7 col-xs-12"
@@ -159,12 +198,19 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">排序</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">商品名称 <span
                           class="required">*</span>
                       </label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" id="first-name" required="required" data-parsley-required-message="商品名称不可为空"
-                          placeholder="最多允许输入30个汉字" class="form-control col-md-7 col-xs-12">
+                        <input type="text" id="first-name1111" required="required" name="product-name"
+                          data-parsley-required-message="商品名称不可为空" placeholder="最多允许输入30个汉字"
+                          class="form-control col-md-7 col-xs-12">
                       </div>
                     </div>
                   </div>
@@ -187,16 +233,16 @@
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class="product-checkbox">
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="1" class="flat" onclick="addSkuHtml()" /> 红色
+                            <input type="checkbox" name="color" value="1" data-name="红色" class="flat" onclick="addSkuHtml()" /> 红色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="2" class="flat" onclick="addSkuHtml()" /> 白色
+                            <input type="checkbox" name="color" value="2" data-name="白色" class="flat" onclick="addSkuHtml()" /> 白色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="3" class="flat" onclick="addSkuHtml()" /> 黑色
+                            <input type="checkbox" name="color" value="3" data-name="黑色" class="flat" onclick="addSkuHtml()" /> 黑色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="4" class="flat" onclick="addSkuHtml()" /> 黄色
+                            <input type="checkbox" name="color" value="4" data-name="黄色" class="flat" onclick="addSkuHtml()" /> 黄色
                           </span>
                         </div>
                       </div>
@@ -207,16 +253,16 @@
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class="product-checkbox">
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="5" class="flat" onclick="addSkuHtml()" /> S
+                            <input type="checkbox" name="size" value="5" data-name="S" class="flat" onclick="addSkuHtml()" /> S
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="6" class="flat" onclick="addSkuHtml()" /> L
+                            <input type="checkbox" name="size" value="6" data-name="L" class="flat" onclick="addSkuHtml()" /> L
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="7" class="flat" onclick="addSkuHtml()" /> XL
+                            <input type="checkbox" name="size" value="7" data-name="XL" class="flat" onclick="addSkuHtml()" /> XL
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="8" class="flat" onclick="addSkuHtml()" /> XXL
+                            <input type="checkbox" name="size" value="8" data-name="XXL" class="flat" onclick="addSkuHtml()" /> XXL
                           </span>
                         </div>
                       </div>
@@ -346,7 +392,7 @@
                     <br />
                     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                       <button type="button" class="btn btn-primary">保存草稿</button>
-                      <button type="button" class="btn btn-success" id="product-submit">提交宝贝</button>
+                      <button type="submit" class="btn btn-success" id="product-submit">提交宝贝</button>
                     </div>
                   </div>
                 </div>
@@ -380,8 +426,12 @@
   <!-- bootstrap-progressbar -->
   <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 
+  <!-- <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
+
   <!-- Parsley -->
-  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+ <script src="../vendors/parsleyjs/dist/parsley.min.js"></script> 
 </body>
 
 </html>
