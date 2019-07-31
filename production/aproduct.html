@@ -22,7 +22,7 @@
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
   <link href="../build/css/custom_change.css" rel="stylesheet">
-  
+  <link href="../build/js/upload.css" rel="stylesheet">
 
   <style type="text/css">
     .flat {
@@ -43,16 +43,32 @@
 
       margin-right: 10px;
     }
+
+    .sku-fill {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #skuFillSubmit {
+      margin-bottom: 0px;
+    }
   </style>
   <!-- jQuery -->
   <script src="../vendors/jquery/dist/jquery.min.js"></script>
   <script>
 
-$().ready(function() {
- $("#product-form").parsley();
-});
 
     function addSkuHtml() {
+      // 缓存当前已经输入的价格和库存
+      var skusInput = [];
+      $('#skulist tr').each(function () {
+        skusInput.push({
+          "Properties": $(this).find('.sku-item-color').attr('data-color') + ":" + $(this).find('.sku-item-size').attr('data-size'),
+          "Price": $(this).find('.sku-item-price input').val(),
+          "Stock": $(this).find('.sku-item-stock input').val()
+        });
+      });
+
       var skuHtml = ''
       $('#skulist').html(skuHtml);
 
@@ -72,16 +88,26 @@ $().ready(function() {
         currentSizeCount = 0;
         $(":checkbox[name='size']:checked").each(function () {
           currentSizeCount++;
+          var price = 0;
+          var stock = 0;
+          var properties = selectColorId + ":" + $(this).val();
+          // 获取当前已经输入的价格和库存
+          $.each(skusInput, function (index, data) {
+            if (data.Properties == properties) {
+              price = data.Price;
+              stock = data.Stock;
+            }
+          });
 
           skuHtml += '<tr>';
           if (currentSizeCount > 1) {
-            skuHtml += '   <td class="sku-item-color hide" data-color="'+selectColorId+'">'+selectColorName+'</td>';
+            skuHtml += '   <td class="sku-item-color hide" data-color="' + selectColorId + '">' + selectColorName + '</td>';
           } else {
-            skuHtml += '   <td class="sku-item-color" rowspan='+ sizeCount +' data-color="'+selectColorId+'">'+selectColorName+'</td>';
+            skuHtml += '   <td class="sku-item-color" rowspan=' + sizeCount + ' data-color="' + selectColorId + '">' + selectColorName + '</td>';
           }
-          skuHtml += '   <td class="sku-item-size" data-size="'+$(this).val()+'">'+$(this).attr('data-name');+'</td>';
-          skuHtml += '   <td class="sku-item-price"><input type="number" value="0" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
-          skuHtml += '   <td class="sku-item-stock"><input type="number" value="0" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-size" data-size="' + $(this).val() + '">' + $(this).attr('data-name'); +'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="' + price + '" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="' + stock + '" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
           skuHtml += '</tr>';
         });
       });
@@ -89,7 +115,7 @@ $().ready(function() {
     };
 
     $(function () {
-      $("#product-submit11").click(function () {
+      $("#product-submit").click(function () {
         var skus = [];
         var productAttr = [];
         var colorid = $("#colorlist").attr("data-id");
@@ -104,7 +130,7 @@ $().ready(function() {
             "Stock": $(this).find('.sku-item-stock input').val()
           });
         });
-        
+
         // 插入颜色
         $(":checkbox[name='color']:checked").each(function () {
           productAttr.push({
@@ -121,37 +147,25 @@ $().ready(function() {
           });
         });
 
+      });
 
-        alert(JSON.stringify(skus));
-        // var data = $.param({"token":"token", "status":"status"}) + "&" + $("#product-form").serialize();
-        //   alert(data);
+      // 批量填充价格和库存
+      $("#skuFillSubmit").click(function () {
+        var price = $("#skuFillPrice").val();
+        var stock = $("#skuFillStock").val();
+        $('#skulist tr').each(function () {
+          if (price.length != 0) {
+            $(this).find('.sku-item-price input').val(price);
+          }
+          if (stock.length != 0) {
+            $(this).find('.sku-item-stock input').val(stock);
+          }
+        });
 
       });
-      //$("#ProductAttr").val(skus.toString());
-      //alert(skus.toString());
 
-      // });
     });
 
-    //提前定义好formData
-// var formData = ("#form").serialize();//获取所对应的form表单中的数据， //此时提交数据时，只是提交了表单中数据，如果需要额外数据的提交 //直接 formData['数据name'] = '数据值' 的方式即可。后再 submit 提交数据,,,,,^^^,即可^^^^^^^^^&*()
-// ("#form").serialize();//获取所对应的form表单中的数据， //此时提交数据时，只是提交了表单中数据，如果需要额外数据的提交 //直接 formData['数据name'] = '数据值' 的方式即可。后再 submit 提交数据,,,,,^^^,即可^^^^^^^^^&*()
-// .ajax({
-// url: options.url,
-// data:formData, 
-// type: "post",
-// dataType: "json",
-// success: function (data) {
-// if (data.state == "success") {
-// options.success(data);
-// .modalMsg(data.message, data.state);                          if (options.close == true) {
-// .modalMsg(data.message, data.state);                          if (options.close == true) {
-// .modalClose();
-// }
-// } else {
-// $.modalAlert(data.message, data.state);
-// }
-// }
   </script>
 
 </head>
@@ -217,7 +231,7 @@ $().ready(function() {
                 </div>
               </div>
 
-
+              <!--销售信息-->
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -233,16 +247,20 @@ $().ready(function() {
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class="product-checkbox">
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="1" data-name="红色" class="flat" onclick="addSkuHtml()" /> 红色
+                            <input type="checkbox" name="color" value="1" data-name="红色" class="flat"
+                              onclick="addSkuHtml()" /> 红色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="2" data-name="白色" class="flat" onclick="addSkuHtml()" /> 白色
+                            <input type="checkbox" name="color" value="2" data-name="白色" class="flat"
+                              onclick="addSkuHtml()" /> 白色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="3" data-name="黑色" class="flat" onclick="addSkuHtml()" /> 黑色
+                            <input type="checkbox" name="color" value="3" data-name="黑色" class="flat"
+                              onclick="addSkuHtml()" /> 黑色
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="color" value="4" data-name="黄色" class="flat" onclick="addSkuHtml()" /> 黄色
+                            <input type="checkbox" name="color" value="4" data-name="黄色" class="flat"
+                              onclick="addSkuHtml()" /> 黄色
                           </span>
                         </div>
                       </div>
@@ -253,16 +271,20 @@ $().ready(function() {
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class="product-checkbox">
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="5" data-name="S" class="flat" onclick="addSkuHtml()" /> S
+                            <input type="checkbox" name="size" value="5" data-name="S" class="flat"
+                              onclick="addSkuHtml()" /> S
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="6" data-name="L" class="flat" onclick="addSkuHtml()" /> L
+                            <input type="checkbox" name="size" value="6" data-name="L" class="flat"
+                              onclick="addSkuHtml()" /> L
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="7" data-name="XL" class="flat" onclick="addSkuHtml()" /> XL
+                            <input type="checkbox" name="size" value="7" data-name="XL" class="flat"
+                              onclick="addSkuHtml()" /> XL
                           </span>
                           <span class="checkbox-item">
-                            <input type="checkbox" name="size" value="8" data-name="XXL" class="flat" onclick="addSkuHtml()" /> XXL
+                            <input type="checkbox" name="size" value="8" data-name="XXL" class="flat"
+                              onclick="addSkuHtml()" /> XXL
                           </span>
                         </div>
                       </div>
@@ -271,6 +293,17 @@ $().ready(function() {
                     <div class="form-group">
                       <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">SKU组合</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
+
+                        <div class="form-inline sku-fill">
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillPrice" placeholder="价格">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillStock" placeholder="库存">
+                          </div>
+                          <button type="button" class="btn btn-default" id="skuFillSubmit">批量填充</button>
+                        </div>
+
                         <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -318,7 +351,7 @@ $().ready(function() {
                 </div>
               </div>
 
-
+              <!--商品描述-->
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -327,10 +360,51 @@ $().ready(function() {
                   </div>
                   <div class="x_content">
                     <div id="alerts"></div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">选择商品照片</label>
+
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <p class="text-warning">择商品照片11选择商品照片11选择商品照片11选择商品照片11选择商品照片11选择商品照片11</p>
+                      </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <!-- <input class="" type="file" name="file">
+                        <button type="button" class="btn btn-default" id="skuFillSubmit">上传</button> -->
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                      <div class="upload-content col-md-9 col-sm-9 col-xs-12">
+                        <div class="content-img">
+                          <!-- <div class="content-img-list">
+                                    <div class="content-img-list-item"><img src="https://www.baidu.com/img/bd_logo1.png" alt=""><a class="delete-btn"><i class="ico-delete"></i></a>
+                                    </div> 
+                                  
+                                  </div> -->
+                          <div class="file">
+                            <div class="content-img-list">
+                              <div class="content-img-list-item"><img
+                                  src="http://wangzhanquan.com/shopclient/tiansheng/Data/Image/upload/1562759906532000415.JPG"
+                                  alt=""><a class="delete-btn"><i class="ico-delete"></i></a>
+                              </div>
+                            </div>
+                            <div class="img-upload">
+                              <i class="ico-plus"></i>上传图片，支持jpg/png<input type="file" name="file" accept="image/*"
+                                id="upload">
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="upload-tips">
+                          最多上传4张图片，单张1M
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
               </div>
 
+              <!--仓库售后-->
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -385,7 +459,7 @@ $().ready(function() {
                 </div>
               </div>
 
-
+              <!--提交宝贝-->
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
@@ -431,7 +505,8 @@ $().ready(function() {
 <script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script> -->
 
   <!-- Parsley -->
- <script src="../vendors/parsleyjs/dist/parsley.min.js"></script> 
+  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+  <script src="../build/js/upload.js"></script>
 </body>
 
 </html>
