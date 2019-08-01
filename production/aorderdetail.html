@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gentelella Alela! | </title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- Select2 -->
+  <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+  <!-- Switchery -->
+  <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+  <!-- starrr -->
+  <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .message_wrapper {
+      margin-bottom: 20px;
+    }
+
+    /* Common styles for all types */
+    .bs-callout {
+      padding: 20px;
+      border: 1px solid #eee;
+      border-left-width: 5px;
+      border-radius: 3px;
+    }
+
+    .bs-span span {
+      margin-right: 10px;
+    }
+
+    .bs-callout h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    .bs-callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bs-callout code {
+      border-radius: 3px;
+    }
+
+    /* Tighten up space between multiple callouts */
+    .bs-callout+.bs-callout {
+      margin-top: -5px;
+    }
+
+    /* Variations */
+    .bs-callout-danger {
+      border-left-color: #ce4844;
+    }
+
+    .bs-callout-danger h4 {
+      color: #ce4844;
+    }
+
+    .bs-callout-warning {
+      border-left-color: #aa6708;
+    }
+
+    .bs-callout-warning h4 {
+      color: #aa6708;
+    }
+
+    .bs-callout-info {
+      border-left-color: #1b809e;
+    }
+
+    .bs-callout-info h4 {
+      color: #1b809e;
+    }
+
+    .message_title {
+      width: 30%;
+      float: left;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script>
+
+
+
+  </script>
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>订单详情 <small>部分信息要修改，请点右边的<mark>修改</mark>按钮</small></h2>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default btn-sm"
+                                id="productSubClassAdd">
+                            <i class="fa fa-reply"></i> 返回订单列表
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="profile_title">
+                      <div class="col-md-6">
+                        <!-- <button type="button" class="btn btn-default btn-sm">返回订单列表</button> -->
+                        <h2>当前订单状态为：<code>审核中</code></h2>
+                      </div>
+                      <div class="col-md-6">
+                        <div id="reportrange" class="pull-right">
+                          <button type="button" class="btn btn-success btn-sm">审核订单</button> 
+                          <button type="button" class="btn btn-primary btn-sm">下载资料包</button>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">订单基本信息</h4>
+                      <div class="bs-callout">
+                        <p>订单编号：<strong>073111202448922</strong></p>
+                        <p>下单时间： <strong>2019-07-31 11:38:08 </strong></p>
+                      </div>
+                    </div>
+
+                    <div class="message_wrapper">
+                        <h4 class="heading message_title">发货要求</h4>
+                        <div class="pull-right">
+                          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-edit"></i> 修改</button>
+                        </div>
+                      
+                      <div class="clearfix"></div>
+
+                      <div class="bs-callout">
+                        <p>寄送快递选择： <strong>任意快递</strong></p>
+                        <p>运费支付方式： <strong>寄付</strong></p>
+                        <p>最迟发货时间： <strong>2019-08-02</strong></p>
+                        <p>预计发货时间： <strong>2019-08-03</strong></p>
+                      </div>
+                    </div>
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">收货人信息</h4>
+                      <div class="bs-callout">
+                        <p>收货人姓名： <strong>许敏华</strong></p>
+                        <p>收货电话： <strong>15921890404</strong></p>
+                        <p>详细地址： <strong>江苏省南通市崇川区钟秀路晶城国际411</strong></p>
+                      </div>
+                    </div>
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">是否印花
+                        <input type="checkbox" class="js-switch" checked="checked" /> <small>注：开关打开是表示要印花</small>
+                      </h4>
+                    </div>
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">印花方式</h4>
+                      <table class="table  table-bordered">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>印花工艺</th>
+                            <th>工艺细分</th>
+                            <th>印花版数</th>
+                            <th>款式件数</th>
+                            <th>印花尺寸说明</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>热升华</td>
+                            <td>A6</td>
+                            <td>1</td>
+                            <td>65</td>
+                            <td>右袖宽10厘米a6热升华</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>热升华</td>
+                            <td>A6</td>
+                            <td>1</td>
+                            <td>65</td>
+                            <td>右袖宽10厘米a6热升华</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>热升华</td>
+                            <td>A6</td>
+                            <td>1</td>
+                            <td>65</td>
+                            <td>右袖宽10厘米a6热升华</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">备注信息</h4>
+                      <div class="bs-callout">
+                        <p>新合伙人的第一单，麻烦注意货期和质量，谢谢</p>
+                      </div>
+                    </div>
+
+                    <div class="message_wrapper">
+                      <h4 class="heading">费用核算</h4>
+                      <div class="bs-callout bs-callout-danger">
+                        <p class="bs-span">
+                          <span>商品数量：<strong>65件</strong></span>
+                          <span>商品裸价：<strong>445.00元</strong></span>
+                          <span>印花费用：<strong>780.00元</strong></span>
+                          <span>运费：<strong>38.00元</strong></span>
+                          <span>优惠费用：<strong>-0.00元</strong></span>
+                        </p>
+                        <h4>费用合计：<strong>65.00</strong></h4>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+
+  <!-- iCheck -->
+  <script src="../vendors/iCheck/icheck.min.js"></script>
+
+  <!-- jQuery Tags Input -->
+  <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+  <!-- Switchery -->
+  <script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
+</body>
+
+</html>
