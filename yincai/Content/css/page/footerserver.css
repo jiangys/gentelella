@@ -1,0 +1,12 @@
+﻿/*首页底部 */
+.footer-server{background: none repeat scroll 0 0 #363636;padding-top:30px;}
+.footer-server .coop{width:100%;padding-bottom:30px;}
+.footer-server .coop .help{width:200px;}
+.footer-server .coop .notice{width:246px;}
+.footer-server .coop-item a{color:#999;font-size:12px;line-height:20px;}
+.footer-server .coop-header h5{color:#999;float:left;display:inline;font-weight:bold;margin-right:15px;font-size:15px;}
+.footer-server .comm-list{margin-top:10px;color: #999;}
+.footer-server .coop-weixin{margin-top:10px;color:#999;float:left;margin-right:10px;text-align:center;width:95px;}
+.footer-server .coop-weixin img{width:90px;}
+.footer-server .coop-weixin span{display:block;padding-top:5px;}
+.footer-server .comm-list p{margin-top:10px;}

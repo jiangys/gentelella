@@ -1,0 +1,22 @@
+﻿
+.listcon{background:none repeat scroll 0 0 #FFFFFF;border-style:solid;border-color:#F6584D #e8e8e8 #e8e8e8;border-width:2px 1px 1px;font-size:14px;margin-bottom:5px;width:730px;float:left;}
+.listcon .listcon_title{background:none repeat scroll 0 0 #F6F6F6;color:#000000;font-weight:bold;height:40px;line-height:36px;padding:0 15px;margin-bottom:5px;}
+.listcon .listcon_body li{float:left;height:40px;line-height:31px;width:728px;padding:0 15px;border-bottom:1px solid #EEEEEE;}
+.listcon .listcon_body li:hover{background-color:#FCFCF2;}
+.listcon .listcon_page{padding:0 20px;text-align:right;}
+.width530,.width80,.width150{line-height:40px;float:left;}
+.width530{overflow:hidden;white-space:nowrap;width:530px;}
+.width150{overflow:hidden;text-align:center;white-space:nowrap;width:150px;}
+/*详细描述*/
+ .detail-box{padding:20px;min-height:550px;}
+.detail-title{border-bottom:1px solid #DDD;padding-bottom:10px;margin-bottom:13px;}
+.detail-title .title{color:#4B4B4B;font-size:22px;font-weight:bold;}
+.pub-time{color:#666666;display:block;font-size:12px;padding-top:8px;}
+.info-bh{color:#707070;font-weight:normal;}
+.detail-cont{color:#333333;font-size:12px;margin-bottom:10px;}
+.detail-cont li{height:30px;line-height:30px;}
+.detail-cont li,.detail-cont li .cont1{font-size:14px;}
+.detail-cont li span{display:inline-block;font-size:14px;margin-right:5px;}
+.detail-cont .phone{font-size:18px;font-weight:600;}
+.summary-box{font-size:14px;line-height:2em;margin-bottom:30px;overflow:hidden;color:#333333;}
+/*详细描述 结束*/

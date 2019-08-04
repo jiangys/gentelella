@@ -1,0 +1,33 @@
+﻿
+/*我的订单*/
+.order-list-type a.current{color:#e95c00;}
+.order-list-type .sep{color:#8c8c8c;margin:0 15px;}
+.order-list-box{border-color:#e5e5e5;border-image:none;border-style:solid solid none;border-width:1px 1px 0;}
+/*订单详情*/
+.order-detail-table{width:100%;}
+.order-detail-table th,.order-detail-table td{border:1px solid #e5e5e5;}
+.order-detail-table .column-info{background:none repeat scroll 0 0 #F2F2F2;font-weight:400;height:41px;text-align:left;}
+.order-detail-table .column-t{border-width:0 0 1px;}
+.order-detail-table .column-info .column-content{height:21px;padding-left:20px;}
+.order-detail-table .column-info .order-status{color:#e95c00;}
+.order-detail-table .column-info .sep{color:#e5e5e5;margin:0 5px;}
+/*订单列表*/
+.order-detail-table .column-l{border-left:0 none;}
+.order-detail-table .order-goods-list li.first{border-top:0 none;}
+.order-detail-table .order-goods-list .goods-price{display:block;}
+.order-detail-table .order-goods-list li{border-top:1px solid #e5e5e5;min-height:100px;padding:30px 20px 30px 100px;position:relative;}
+.order-detail-table .order-goods-list .goods-thumb{height:60px;left:20px;position:absolute;top:20px;width:60px;}
+/*订单价格*/
+.order-detail-table .column-price{padding:30px 0 20px;text-align:center;vertical-align:top;width:119px;}
+.order-detail-table .column-action{padding:30px 0 20px;text-align:center;vertical-align:top;width:150px;}
+.order-detail-table .column-r{border-right:0 none;}
+.order-detail-table .order-action a{display:block;margin:0 auto;}
+/*订单明细列表详情 orderview*/
+.user-title .more .order-handle .time{color:#ff4a00;line-height:30px;margin-right:3px;}
+.user-title .order-handle{padding-top:25px;}
+.user-title .order-handle .btn{margin-left:20px;}
+.order-detail-item .pay-price{font-weight:600;}
+.order-delivery-address{margin-top:20px;padding:30px;}
+.order-delivery-address .order-text-section{margin-bottom:30px;}
+.order-delivery-address .order-text-section h5{color:#8c8c8c;font-weight:400;margin:0 0 10px;}
+.order-delivery-address .order-text-table th{font-weight:400;text-align:left;vertical-align:top;width:75px;}

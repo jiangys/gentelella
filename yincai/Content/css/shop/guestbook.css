@@ -1,0 +1,16 @@
+﻿/*头部样式*/
+.nav .menu li a.guestbook{background: none repeat scroll 0 0 #A40000;}
+
+.listcon{background:none repeat scroll 0 0 #ffffff;border-color:#f6584d #e8e8e8 #e8e8e8;border-style:solid;border-width:2px 1px 1px;float:left;font-size:14px;margin-bottom:20px;width:730px;padding:10px 20px 20px;}
+.submit-question{}
+.listcon .btn{float:right;}
+.qa-list{margin-top:20px;}
+.qa-list .qa-record{border-bottom:1px dashed #e6e6e6;padding-bottom:23px;padding-top:15px;}
+.qa-list .gray{color:#999;}
+.qa-list .q-info{overflow:hidden;}
+.qa-list .pull-left{float:left !important;}
+.qa-list .q-time{margin-right:16px;}
+.qa-list .pull-right{float:right !important;}
+.qa-list .question .content{overflow:hidden;word-wrap:break-word;}
+.qa-list .answer{border:1px solid #e6e6e6;color:#cc3333;margin-top:15px;padding:15px;position:relative;}
+.qa-list .answer .icon-arrow-up{background:url("/Content/images/shop/kefu-arrow-up.png") no-repeat scroll;display:inline-block;height:10px;left:35px;position:absolute;top:-10px;width:26px;}

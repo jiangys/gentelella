@@ -1,0 +1,30 @@
+﻿
+ /*导航结束*/
+ /*登陆框 幻灯 开始*/
+.banner{width:100%;}
+#slider{width:100%;height:360px;background:url("/Content/images/home/loading16x16.gif") center center no-repeat #edf7fb;z-index:10;}
+.slider{ background:#fff;height:360px; position:relative;}
+.slider .banner-bg{height:360px;width:100%; position:absolute;top:0;left:0; background-position:center top;}
+.banner_ctrl{ height:100px;width:960px;position:absolute;top:50%;left:50%;margin:-50px 0 0 -480px;z-index:2;}
+.banner_ctrl a{ display:block;width:30px;height:100px; background:url(/Content/images/ad/banner_ctrl.png) no-repeat;_background:url(/Content/images/ad/banner_ctrl.jpg) no-repeat; position:absolute; opacity:.1;filter: alpha(opacity=10);
+-moz-opacity:0.1;}
+.banner_ctrl a.prev{left:-30px;}
+.banner_ctrl a.next{right:-30px; background-position:-30px 0;}
+/*#slider li{width:100%;height:100%;z-index:11;position:absolute;left:0;top:0;}
+#slider .slider-bg a{display:block;width:100%;height:350px;}
+#slider .slider-bg{width:100%;height:348px;overflow:hidden;background-position:50% 50%;background-repeat:no-repeat;}*/
+ /*登陆框 幻灯 结束*/
+.wrapper{width:100%;padding-bottom:30px;/*background:url("images/wrapper-bottom.jpg") left bottom repeat-x #fefefe;*/}
+.wrapper a:hover{text-decoration:none;color:#146fc0;}
+.wrapper a:active{color:#a9a9a9;}
+.enter-life{padding-top:30px;}
+.enter-life li{width:200px;}
+.enter-life li.last{margin-right:0;}
+.enter-life a{display:block;width:105px;height:150px;background:url("/Content/images/home/app_icons.png") no-repeat;margin:0 auto;}
+.enter-life a.enter-sj{background-position:0 0;}
+.enter-life a.enter-wy{background-position:-108px 0;}
+.enter-life a.enter-zz{background-position:-218px 0;}
+.enter-life a.enter-lc{background-position:-328px 0;}
+
+ /*切换学校*/
+.school-wrap dd {margin: 3px 10px 3px 0;}

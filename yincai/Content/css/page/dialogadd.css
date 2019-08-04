@@ -1,0 +1,30 @@
+﻿.DialogContent {
+    min-height: 80px;
+}
+
+    .DialogContent .cart-res {
+        color: #333;
+        min-height: 60px;
+        padding: 23px 0 0 150px;
+    }
+
+    .DialogContent .icon-box {
+        width: 150px;
+        margin-left: 50px;
+    }
+
+    .DialogContent .cart-res .h2 {
+        margin-bottom: 10px;
+    }
+
+    .DialogContent .icon-box .iconfont {
+        border: 5px solid #83bd39;
+        border-radius: 50%;
+        color: #83bd39;
+        display: block;
+        font-size: 50px;
+        height: 80px;
+        position: absolute;
+        text-align: center;
+        width: 80px;
+    }

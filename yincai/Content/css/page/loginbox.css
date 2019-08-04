@@ -1,0 +1,62 @@
+/*.login-area{height:0;z-index:100;}
+.login-box{width:280px;padding:20px 0 30px;right:0;top:25px;position:absolute;z-index:101;background-color:rgba(51,51,51,0.6);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#66000000',EndColorStr='#66000000') zoom:1;}
+.login-box h2{color:#fff;font-weight:bold;padding-left:30px; font-size: 16px;}
+.login-box .f-pass{display:inline-block;width:80px;height:22px;text-align:center;padding-top:8px;margin-right:5px;zoom:1;}*/
+.login-tab{height:35px;clear:both;width:240px;margin-left:16px;}
+.login-tab .tab-item{width:80px;height:35px;float:left;display:inline;position:relative;cursor:pointer;list-style:none;}
+.login-tab .tab-item a{width:100%;height:35px;line-height:35px;color:#b8b7b7;font-size:14px;text-align:center;display:block;text-decoration:none;outline:none;position:absolute;}
+.login-tab .tab-selected a{font-weight:bold;color:#fff;}
+.tang-pass-login{width:100%;}
+.tang-pass-login .login-form{margin-left:30px;}
+.tang-pass-login .pass-generalErrorWrapper{margin:0;}
+.tang-pass-login dl,.tang-pass-login dt,.tang-pass-login dd,.tang-pass-login ul,.tang-pass-login ol,.tang-pass-login li,.tang-pass-login input{margin:0;padding:0;}
+.tang-pass-login .clearfix:after,.tang-pass-login .pass-form-item:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.tang-pass-login .clearfix,.tang-pass-login .pass-form-item{zoom:1;}
+.tang-pass-login{font:12px/1.5 tahoma,arial,Hiragino Sans GB,\5b8b\4f53;position:relative;}
+.tang-pass-login .pass-form-item{margin-top:20px;display:block;position:relative;}
+.tang-pass-login .pass-label{width:45px;height:26px;line-height:26px;padding-right:5px;display:none;float:left;text-align:right;font-size:12px;color:#fff;font-family:"ËÎÌו";}
+
+.tang-pass-login .pass-text-input{width:173px;padding:0 5px 0 5px;font-family:'ËÎÌו';float:left;display:inline;border-left:1px solid #ccc;border-top:1px solid #ccc;border-right:1px solid #ddd;border-bottom:1px solid #ddd;background-color:#fff;height:32px;font-size:14px;color:#333;line-height:32px;-webkit-transition-property:all;-webkit-transition-duration:.5s;-moz-transition-property:all;-moz-transition-duration:.5s;-o-transition-property:all;-o-transition-duration:.5s;transition-property:all;transition-duration:.5s;}
+
+.tang-pass-login .pass-text-input a{font-size:12px;color:#d70000;display:block;text-align:center;line-height:32px;}
+.tang-pass-login .pass-text-input-hover{border-left-color:#ababab;border-top-color:#ababab;border-right-color:#ccc;border-bottom-color:#ccc;}
+.tang-pass-login .pass-text-input-focus{border-left-color:#377bcb;border-top-color:#377bcb;border-right-color:#377bcb;border-bottom-color:#377bcb;}
+.tang-pass-login .pass-generalError{color:#ff7326;display:block;height:30px;font-size:12px;}
+.tang-pass-login .pass-generalError-display{height:auto;background-color:#fffee4;line-height:18px;padding:4px 10px;width:198px;margin:6px 0 10px;}
+.tang-pass-login input:focus{outline:0;}
+.tang-pass-login .pass-form-item-userName{margin-top:0;margin-left:0;padding-left:34px;background:url(/Content/images/home/login-box-icon.jpg) no-repeat 0 0;}
+.tang-pass-login .pass-text-input-verifyCode{padding:0 8px;width:64px;height:32px;line-height:32px;display:block;float:left;display:inline;color:#a9a9a9;}
+.tang-pass-login .pass-verifyCode{height:32px;width:64px;border:1px solid #DDD;float:left;display:inline;margin-left:5px;}
+.tang-pass-login .pass-change-verifyCode{padding-left:5px;font-size:12px;text-decoration:underline;color:#BBB;line-height:26px;float:left;display:inline;cursor:pointer;}
+.tang-pass-login .pass-form-item-memberPass{font-size:12px;color:#666;position:relative;margin-top:7px;padding-left:50px;height:18px;display:none;}
+.tang-pass-login .pass-form-item-memberPass input{vertical-align:middle;}
+.tang-pass-login .pass-form-item-memberPass label{padding-left:5px;}
+.tang-pass-login .pass-form-item-submit{margin-bottom:15px;margin-left:0;height:34px;line-height:34px;}
+.tang-pass-login .pass-form-item-submit input{float:left;display:inline;font-size:14px;cursor:pointer;}
+.tang-pass-login .pass-form-item-submit .pass-button-submit{font-size:18px;letter-spacing:10px;}
+.tang-pass-login .pass-form-item-submit a.pass-fgtpwd{font-size:12px;color:#00c;margin-left:20px;float:left;height:32px;line-height:32px;text-decoration:underline;display:none;}
+.tang-pass-login .pass-button-submit{background:url(/Content/images/home/button.png) no-repeat;width:220px;height:40px;border:none;color:#FFF;background-position:0 0;font-family:'Microsoft YaHei';font-size:20px;letter-spacing:3px;}
+.tang-pass-login .pass-button-submit:hover{background-position:0 -40px;}
+.tang-pass-login .pass-button-submit:active{background-position:0 -80px;}
+.tang-pass-login .pass-item-error,.tang-pass-login .pass-item-tip{float:left;display:inline;height:26px;line-height:26px;padding-left:10px;}
+.tang-pass-login .pass-item-error{color:#DA1111;}
+.tang-pass-login .pass-item-tip{color:#A4A4A4;}
+.sc-tip{color:#bbb;margin-right:30px;margin-top:20px;}
+.login-box-bottom{margin-top:20px !important;margin-top:5px;margin-left:30px;}
+.login-box-bottom a{font-size:12px;color:#BBB;}
+.login-box-bottom a.register{color:#fff;display:inline-block;width:100px;height:22px;background:#3c95b2;text-align:center;padding-top:8px;margin-right:5px;zoom:1;}
+.register:hover{text-decoration:none;background:#2cb0dc;}
+.register:active{background:#117596;}
+.login-nav-separate{width:10px;height:35px;float:left;display:inline;list-style:none;position:relative;margin-right:12px;}
+.login-nav-separate span{width:100%;height:35px;line-height:35px;color:#b8b7b7;font-size:14px;text-align:center;display:block;position:absolute;}
+.login-box .tang-pass-login .pass-form-item-password{margin-top:16px;padding-left:34px;background:url(/Content/images/home/login-box-icon.jpg) no-repeat 0 -34px;}
+.login-box .tang-pass-login .pass-form-item-password label{display:none;text-align:left;}
+.tang-pass-login a,.tang-pass-login label,.tang-pass-login p,.tang-pass-login li{font-size:12px;margin:0;padding:0;list-style:none;}
+.tang-pass-login .pass-form-item.pass-form-item-userName{z-index:21;}
+.tang-pass-login .pass-form-item{position:relative;clear:both;}
+.tang-pass-login .pass-form-item .pass-placeholder{position:absolute;z-index:1999;display:block;top:1px;left:36px;height:28px;line-height:28px;_line-height:30px;width:140px;padding-left:13px;font-size:12px;color:#a9a9a9;cursor:text;}
+.tang-pass-login .pass-form-item .pass-placeholder{font-size:14px;height:32px;line-height:32px;}
+.tang-pass-login .pass-form-item .pass-placeholder-password{width:30px;}
+.tang-pass-login .pass-form-item .pass-placeholder-verifyCode{left:-9999px;}
+.tang-pass-login .pass-form-item .pass-placeholder-password{top:-37px;left:-12px;color:#555;}
+.tang-pass-login .pass-form-item .pass-placeholder-password{display:none\9 !important;left:-9999px\9 !important;}

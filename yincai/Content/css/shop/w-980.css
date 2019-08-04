@@ -1,0 +1,15 @@
+﻿/*重写w 为980*/
+.w{width:980px;margin:0 auto;min-width:980px;}
+/*头部搜索框 */
+.search-mod {height: 60px;margin-right: 50px;width: 400px;}
+.search-mod .txt {width: 320px;}
+/*头部搜索框 结束*/
+/*导航下拉*/
+/*.side_nav{margin-left:-490px;cursor:pointer;}*/
+.side_nav .allSort_drop{display:block;background-position:0 -206px;cursor:pointer;height:11px;position:absolute;top:41px;width:150px;}
+.side_nav .navlist{display:none;}
+.side_nav .side_nav_title{height:50px;}
+.side_nav:hover .side_nav_title{height:67px;}
+.side_nav_title:hover .allSort_drop{display:none;}
+/*导航下拉*/
+/*结束重写 end*/

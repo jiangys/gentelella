@@ -1,0 +1,47 @@
+﻿.content-wrap{margin:20px 0 40px;}
+ /*流程*/
+.cart-nav{overflow:visible;padding-top:10px;}
+.cart-nav h3{float:left;font-size:22px;vertical-align:bottom;line-height:35px;}
+.cart-nav h3 .cart_icon{background-position:-133px -53px;display:inline;float:left;height:27px;margin:1px 0 0 3px;width:26px;}
+.cart-nav h3 .count{color:#999;font-size:12px;font-weight:normal;}
+.cart-nav .process{float:right;width:375px;}
+.cart-nav .process .step{float:left;width:125px;}
+.cart-nav .process .num{color:#999;font-family:"Microsoft YaHei",黑体,arial,sans-serif;font-size:12px;height:18px;line-height:18px;text-align:center;}
+.cart-nav .process .step-now .num{color:#666;font-weight:bold;}
+.cart-nav .process .arrow{height:5px;overflow:hidden;width:125px;display:block;}
+.cart-nav .process .step-now .arrow-a{background-position:-173px -128px;}
+.cart-nav .process .step-now .arrow-b{background-position: -173px -133px;}
+.cart-nav .process .arrow-a{background-position:-173px -143px;}
+.cart-nav .process .arrow-b{background-position:-173px -148px;}
+.cart-nav .process .arrow-c{background-position:-173px -153px;}
+/*流程结束*/
+/*购物车列表*/
+.alert {margin-bottom: 10px;margin-top: 5px;}/*购物车没货提示框*/
+.cart-list{background-color:#fff;border:1px solid #dcdcdc;padding:30px 25px 0;text-align:center;}
+.cart-list table .head{background-color:#e8e8e8;height:32px;}
+.cart-list table .left{float:none;text-align:left;}
+.cart-list table tbody tr{border-bottom:1px dashed #ccc;height:100px;}
+.cart-list table th{text-align:center;}
+.cart-list table tbody tr:last-child{border:0 none;}
+.cart-list table .deal img{height:70px;width:70px;}
+.cart-list table .gray{color:#999;}
+.cart-list table .red{color:#c00;}
+.cart-list table .counter{margin-left:15px;}
+/*购物车列表 结束*/
+/*提交按钮*/
+.buy{margin-top:15px;}
+.buy .price{margin:10px;font-size:16px;}
+.buy .price span{color:#e02f2f;font-size:24px;}
+/*提交按钮 结束*/
+
+/*空购物车 */
+.cart-empty{background-color:#fff;border:1px solid #dcdcdc;padding:100px 25px 110px;text-align:center;}
+.cart-empty-tips{color:#666;display:inline-block;padding-left:115px;padding-top:20px;position:relative;text-align:left;}
+.cart-empty-icon{background:url("/Content/images/shop/cart.png") no-repeat scroll 0 -46px white;height:112px;left:0;position:absolute;top:0;width:92px;}
+.cart-empty-tips h4{margin-bottom:15px;}
+.cart-empty-tips li{list-style:disc inside none;}
+/*空购物车 结束*/
+
+
+/*填写并核对订单信息*/
+.cart-nav h3 .confirm_icon{background-position:-159px -53px;display:inline;float:left;height:27px;margin:2px 0 0 3px;width:26px;}

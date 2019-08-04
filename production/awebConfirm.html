@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>印彩云欢迎您 </title>
+  <link href="../yincai/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../yincai/Content/vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="../yincai/Content/iconfont/iconfont.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/base.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/site.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/shop/common.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/page/footerserver.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/shop/cart.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/shop/order.css" rel="stylesheet" />
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
+  <style type="text/css">
+  .log-style {
+    background: #f2f2f2;
+}
+    .logistics .form-item-list {
+      width: 320px;
+      padding: 20px 0 50px 20px;
+      background: #f2f2f2;
+    }
+
+    .logistics .form-item {
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 10px;
+    }
+
+    .logistics .form-title {
+      width: 84px;
+      display: inline-block;
+    }
+
+    .logistics .form-item .item-select {
+      width: 200px;
+      height: 30px;
+    }
+
+    .logistics .form-item .item-input,
+    .logistics .form-item .item-select {
+      width: 188px;
+      height: 28px;
+      border: 1px solid #999;
+      font-size: 12px;
+      padding-left: 10px;
+      margin-left: 10px;
+    }
+
+    .style-list {
+      background: #f8fcff;
+      width: 768px;
+    }
+
+    .style-item {
+      width: 748px;
+      padding: 20px 0;
+      margin: 0 20px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .style-item:last-child {
+    border: none;
+}
+
+    .style-img {
+      width: 118px;
+      height: 118px;
+      border: 1px solid #e6e6e6;
+    }
+
+
+    .style-dtl {
+      width: 588px;
+      margin-left: 20px;
+    }
+
+    .style-dtl .name-top {
+      line-height: 38px;
+    }
+
+    .style-dtl .top-color {
+      padding-left: 10px;
+      color: #fd3555;
+    }
+
+    .style-dtl .top-num {
+      font-weight: bold;
+      color: #fd3555;
+      float: right;
+    }
+
+    .style-dtl .skus .size-item {
+      float: left;
+      width: 69px;
+      border: 1px solid #e6e6e6;
+      border-right-color: rgb(230, 230, 230);
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-right: none;
+      text-align: center;
+      background: #fff;
+    }
+
+    .style-dtl .skus .size-name {
+      height: 33px;
+      border-bottom: 1px solid #e6e6e6;
+      line-height: 33px;
+    }
+
+    .style-dtl .skus .purchase {
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .style-dtl .btm-total {
+      margin-top: 10px;
+      text-align: right;
+      color: #fd3555;
+      font-weight: bold;
+    }
+
+    .style-dtl .skus .size-item:last-child {
+      border-right: 1px solid #e6e6e6;
+    }
+
+    .print_title {
+      width: 30%;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+    <div class="container body-content">
+
+
+      <div class="wrapper">
+        <div class="w clearfix">
+          <div class="content-wrap">
+
+            <div class="cart-nav clearfix">
+              <h3>
+                <i class="icon confirm_icon"></i> 填写并核对订单信息
+              </h3>
+              <div class="process">
+                <ul class="clearfix">
+                  <li class="step">
+                    <div class="num num-a">1.提交订单</div>
+                    <div class="arrow arrow-a icon"></div>
+                  </li>
+                  <li class="step step-now">
+                    <div class="num num-b">2.确认并支付</div>
+                    <div class="arrow arrow-b icon"></div>
+                  </li>
+                  <li class="step ">
+                    <div class="num num-c">3.购买成功</div>
+                    <div class="arrow arrow-c icon"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="shopcarbk clearfix">
+              <div class="cont">
+                <div class="infor-box pay-method">
+                  <div class="pay-address">
+                    <h3 class="title">配送信息</h3>
+
+                    <div id="checkoutAddrList" class="clearfix xm-address-list">
+
+
+                      <dl class="item">
+                        <dt>
+                          <strong class="itemConsignee">小江</strong>
+                        </dt>
+                        <dd>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="itemStreet">广州荔湾区花海街20号</p>
+                          <span class="edit-btn editAddress">编辑</span>
+                        </dd>
+                      </dl>
+                      <dl class="item">
+                        <dt>
+                          <strong class="itemConsignee">小江</strong>
+                        </dt>
+                        <dd>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="itemStreet">广州荔湾区花海街20号</p>
+                          <span class="edit-btn editAddress">编辑</span>
+                        </dd>
+                      </dl>
+                      <dl class="item">
+                        <dt>
+                          <strong class="itemConsignee">小江</strong>
+                        </dt>
+                        <dd>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="tel itemTel">17702070037</p>
+                          <p class="itemStreet">广州荔湾区花海街20号</p>
+                          <span class="edit-btn editAddress">编辑</span>
+                        </dd>
+                      </dl>
+
+
+                      <div id="useNewAddr" class="item use-new-addr" data-state="off">
+                        <span class="iconfont icon-add">&#xe606;</span>
+                        使用新地址
+                      </div>
+                    </div>
+                    <div class="addr-list-toggle-wrap">
+                      <span id="addrListToggle">
+                        <i class="iconfont arrow">&#xe60d;</i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="pay-confirm">
+                    <h3 class="title">送货清单</h3>
+                    <div class="log-style">
+                    <div class="logistics fl">
+                      <div class="form-item-list">
+                        <div class="form-item">
+                          <span class="form-title">选择快递</span>
+                          <select class="item-select" id="express-list" name="express">
+                            <option value="renyikuaidi">任意快递</option>
+                            <option value="zhongtong">中通速递</option>
+                          </select>
+                        </div>
+                        <div class="form-item">
+                          <span class="form-title">支付方式</span>
+                          <select class="item-select" name="paymethod" id="paymethod">
+                            <option value="1">寄付</option>
+                            <option value="2">到付</option>
+                          </select>
+                        </div>
+                        <div class="form-item">
+                          <span class="form-title">最迟发货时间</span>
+                          <input type="text" class="item-input" value="" id="latest-delivery"
+                            name="latest_delivery_time" readonly="">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="style-info fl">
+                      <div class="style-list">
+                        <div class="style-item clearfix">
+                          <img class="style-img fl"
+                            src="https://www.dingzhilian.com/upload_dz/style/180302154615950508.jpg">
+                          <div class="style-dtl fl">
+                            <div class="name-top clearfix">
+                              <span class="top-words">MG特价速干网孔圆领短袖</span>
+                              <span class="top-color">男女通款/玫红</span>
+                              <span class="top-num">×4件</span>
+                            </div>
+                            <ul class="skus clearfix">
+
+                              <li class="size-item">
+                                <p class="size-name">M</p>
+                                <p class="purchase">1</p>
+                              </li>
+
+                              <li class="size-item">
+                                <p class="size-name">L</p>
+                                <p class="purchase">3</p>
+                              </li>
+
+                            </ul>
+                            <p class="btm-total">小计:￥26.00</p>
+                          </div>
+                        </div>
+
+                        <div class="style-item clearfix">
+                            <img class="style-img fl"
+                              src="https://www.dingzhilian.com/upload_dz/style/180302154615950508.jpg">
+                            <div class="style-dtl fl">
+                              <div class="name-top clearfix">
+                                <span class="top-words">MG特价速干网孔圆领短袖</span>
+                                <span class="top-color">男女通款/玫红</span>
+                                <span class="top-num">×4件</span>
+                              </div>
+                              <ul class="skus clearfix">
+
+                                <li class="size-item">
+                                  <p class="size-name">M</p>
+                                  <p class="purchase">1</p>
+                                </li>
+  
+                                <li class="size-item">
+                                  <p class="size-name">L</p>
+                                  <p class="purchase">3</p>
+                                </li>
+  
+                              </ul>
+                              <p class="btm-total">小计:￥26.00</p>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+ 
+                    <div class="clearfix"></div>
+                  </div>
+                  
+                  </div>
+
+                  <div class="pay-print">
+                    <h3 class="title">是否印花   <input type="checkbox" class="js-switch" checked="checked" /> <small>注：开关打开是表示要印花</small></h3>
+                  </div>
+
+                  <div class="pay-remark">
+                      <h3 class="title print_title"> 印花方式</h3>
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> 添加印花</button>
+                      </div>
+                      <table class="table  table-bordered">
+                          <thead>
+                            <tr>
+                              <th>印花工艺</th>
+                              <th>工艺细分</th>
+                              <th>印花版数</th>
+                              <th>款式件数</th>
+                              <th>印花尺寸说明</th>
+                              <th>操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                  <select  class="form-control input-sm" required="">
+                                      <option value="">Choose..</option>
+                                      <option value="mouth">热升华</option>
+                                      <option value="press">Press</option>
+                                      <option value="net">Internet</option>
+                                    </select>
+                              </td>
+                              <td>
+                                  <select  class="form-control input-sm" required="">
+                                      <option value="">Choose..</option>
+                                      <option value="mouth">Word of mouth</option>
+                                      <option value="press">Press</option>
+                                      <option value="net">Internet</option>
+                                    </select>
+                              </td>
+                              <td>
+                                <input class="form-control input-sm" type="text" placeholder=".input-sm">
+                              </td>
+                              <td>
+                                  <input class="form-control input-sm" type="text" placeholder=".input-sm">
+                              </td>
+                              <td> <input class="form-control input-sm" type="text" placeholder=".input-sm"></td>
+                              <td> <button type="button" class="btn btn-danger btn-xs">删除</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select  class="form-control input-sm" required="">
+                                        <option value="">Choose..</option>
+                                        <option value="mouth">热升华</option>
+                                        <option value="press">Press</option>
+                                        <option value="net">Internet</option>
+                                      </select>
+                                </td>
+                                <td>
+                                    <select  class="form-control input-sm" required="">
+                                        <option value="">Choose..</option>
+                                        <option value="mouth">Word of mouth</option>
+                                        <option value="press">Press</option>
+                                        <option value="net">Internet</option>
+                                      </select>
+                                </td>
+                                <td>
+                                  <input class="form-control input-sm" type="text" placeholder=".input-sm">
+                                </td>
+                                <td>
+                                    <input class="form-control input-sm" type="text" placeholder=".input-sm">
+                                </td>
+                                <td> <input class="form-control input-sm" type="text" placeholder=".input-sm"></td>
+                                <td> <button type="button" class="btn btn-danger btn-xs">删除</button></td>
+                              </tr>
+                            <tr>
+        
+                              <td>热升华</td>
+                              <td>A6</td>
+                              <td>1</td>
+                              <td>65</td>
+                              <td>右袖宽10厘米a6热升华</td>
+                              <td>删除</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+
+                  <div class="pay-remark">
+                    <h3 class="title">备注留言</h3>
+                    <textarea class="form-control" rows="3" placeholder="针对此订单您若还有其他要求，请填写至此"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="buy clearfix">
+              <a href="/shop/cart" class="btn btn-default fl">返回购物车</a>
+              <button type="button" id="submitOrder" class="btn btn-danger  btn-lg fr">提交订单</button>
+
+              <input hidden="hidden" value="" class="productids" />
+              <div class="price fr">
+                应付总额：<span><i class="Price-font">¥</i>500</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!--弹出新增地址模态框-->
+      <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form action="" class="form-horizontal" id="formAddr">
+              <input type="hidden" id="AddressID" name="AddressID" value="">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增地址</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-warning" id="warningMsg" role="alert">带&nbsp;*&nbsp;号信息必需填写</div>
+
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">收货人姓名<em>*</em></label>
+                  <div class="col-sm-5">
+                    <input type="text" id="Contact" name="Contact" class="form-control" placeholder="收货人姓名">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="tel" class="col-sm-3 control-label">11位手机号<em>*</em></label>
+                  <div class="col-sm-5">
+                    <input type="tel" id="Phone" name="Phone" class="form-control" placeholder="11位手机号">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="tel" class="col-sm-3 control-label">手机短号<em></em></label>
+                  <div class="col-sm-5">
+                    <input type="tel" id="ShortPhone" name="ShortPhone" class="form-control" placeholder="手机短号">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="text2" class="col-sm-3 control-label">收货人地址<em>*</em></label>
+                  <div class="col-sm-9">
+                    <input type="text" id="Address" name="Address" class="form-control" id="inputAddress"
+                      placeholder="收货人地址">
+                  </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <input type="submit" class="btn btn-primary" value="确定" />
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+  <script src="../yincai/Scripts/jquery-1.10.2.js"></script>
+  <script src="../yincai/Scripts/bootstrap.min.js"></script>
+  <script src="../yincai/Content/js/jquery_lazyload-1.9.3/jquery.lazyload.min.js"></script>
+  <script src="../yincai/Scripts/jquery.msgBox.js"></script>
+  <script src="../yincai/Scripts/jquery.msgProcess.js"></script>
+  <script src="../yincai/Content/js/code/com.js"></script>
+  <script src="../yincai/Content/js/code/address.js"></script>
+
+
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      //选择地址
+      $("#checkoutAddrList dl").click(function () {
+        $("#checkoutAddrList dl").removeClass('selected');
+        $(this).addClass('selected')
+      });
+
+      //显示更多收货地址及隐藏收货地址
+      $("#addrListToggle").on("click", function () {
+        //a.hideMoreAddr(),
+        return $(this).hasClass("on") ? (hideAddress(), $(this).removeClass("on")) : ($("#checkoutAddrList").find("dl").show(), $(this).addClass("on"))
+      });
+      //隐藏部分地址，只显示前两个
+      hideAddress();
+      //提交订单
+      $("#submitOrder").click(function () {
+
+        var $data = $("#checkoutAddrList .selected");
+        if ($data.length <= 0) {
+          alert("请先选择收货地址");
+          return;
+        }
+        var addr = $data.attr("data-street");
+        var addid = $data.attr("data-addid");
+        var shorttel = $data.attr("data-shorttel");
+        var tel = $data.attr("data-tel");
+        var contact = $data.attr("data-contact");//联系人
+        var remark = $(".form-control").val();
+        var productids = $(".productids").val();
+        $.post("/shop/Order/OrderIn", { "Contact": contact, "Phone": tel, "ShortPhone": shorttel, "Address": addr, "Remark": remark, "ProductIDList": productids }, function (jsonObj) {
+          $.alertMsg(jsonObj, function () {
+            //下单成功，跳转到功能页面
+            window.location.href = "/shop/order/SubmitSuccess/" + jsonObj.Data;
+          }, function () { alert(jsonObj.Msg); window.location.href = jsonObj.BackUrl; })
+        }, "json");
+      });
+
+    });
+
+    //隐藏部分地址，只显示前两个
+    function hideAddress() {
+      var dl = $("#checkoutAddrList").find("dl");
+      var L = dl.length;
+      for (var i = 2; i < L; i++) {
+        dl[i].style.display = "none"
+      }
+    };
+
+    // 开关初始化
+var elem = document.querySelector('.js-switch');
+var init = new Switchery(elem, { size: 'small' });
+// 开关点击效果
+elem.onchange = function() {
+  alert(elem.checked);
+};
+
+  </script>
+
+</body>
+
+
+</html>

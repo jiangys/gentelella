@@ -1,0 +1,28 @@
+/*body{font: 12px/1.4 tahoma,arial,"Microsoft Yahei";color:#333333;}*/
+body{font: 14px/1.5 arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+ol,ul{list-style:none;}
+em, i {font-style: normal;}
+/*边框统一为#e5e5e5*/
+a img{ border: none;}/* 此选择器将删除某些浏览器中显示在图像周围的默认蓝色边框（当该图像包含在链接中时） */
+a{text-decoration:none;color:#666666;}
+a:hover{text-decoration:none;color:#e95c00;}/*color:#d40000;*/
+a:active{text-decoration:none;}
+strong{font-weight:bold;}
+.clear {clear: both;}
+.clearfix:before,.clearfix:after{content:"";display:table;}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.hidden{display:none;}
+
+
+/*通用颜色*/
+.u-basecolor{color:#e95c00;}
+.u-bguser{background-color:#F2F2F2;}
+

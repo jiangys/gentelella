@@ -1,0 +1,123 @@
+﻿/*.w{width:980px;margin:0 auto;min-width:980px;}
+.w-980{width:980px;margin:0 auto;min-width:980px;}
+.icon{background:url("/Content/images/icons.png") no-repeat;display:inline-block;}*/
+.topbar,.wrapper,.footer-message{background-color: #f7f7f7;width: 100%;}
+/*顶部显示 开始*/
+.topbar{height:35px;color:#eee;font-size:12px;border-bottom:1px solid #eee;}
+.topbar a{color:#898989;}
+.topbar .top-menu{_height:30px;color:#898989;}
+.topbar .top-menu li{float:left;display:inline;line-height:35px;}
+.topbar .fl li{padding-right:12px;}
+.topbar .fr li{padding-left:12px;}
+.topbar .top-menu li s { border-left: 1px solid #ddd;height: 12px;padding-left: 12px;overflow: hidden;top: 9px;width: 0;}
+.topbar .top-menu li a:hover{text-decoration:none;color:#e95c00;}
+.topbar .top-menu .r_icon i{display:inline-block;vertical-align:-3px;}
+.topbar .top-menu .r_icon span{margin-left:2px;}
+.topbar .top-menu .i-collect{height:15px;width: 15px;background-position:-22px 0;left:0}
+.topbar .top-menu .i-local{height:17px;width: 13px;}
+.topbar .top-menu .i-phone{height:15px;width: 14px;background-position:-40px 0;vertical-align:-2px;}
+/*头部 选择学校*/
+.top-school{background:none repeat scroll 0 0 #ffffff;border:1px solid #bbbbbb;margin-left:92px;position:absolute;top:30px;width:280px;z-index:102;color:#333;min-height:200px;}
+.top-school .school-close{background:url("/Content/images/close.png") no-repeat;cursor:pointer;display:block;height:12px;position:absolute;right:10px;top:10px;width:12px;}
+.top-school dl{border-bottom:1px solid #eee;padding:10px 10px 5px;}
+.top-school dt{font-weight:bold;line-height:30px;text-align:left;font-size:14px;}
+.top-school dd a{float:left;margin-right:10px;}
+/*顶部显示 结束*/
+/*个人信息中心 下拉*/
+.top-menu .user-Info{position:relative;}
+.top-menu .user-Info:hover .user-info-menu{display:block;}
+.top-menu .user-info-menu{background:none repeat scroll 0 0 #fff;border:1px solid #dfdfdf;display:none;font-size:12px;line-height:1.5;padding:9px 0 10px;position:absolute;text-align:left;top:35px;width:136px;z-index:30;}
+.top-menu .user-info-menu li{line-height:20px;padding:0;margin:0;width:100%;}
+.top-menu .user-info-menu li a{color:#6d6d6d;display:block;padding:6px 20px;}
+.top-menu .user-info-menu li a:hover{background:none repeat scroll 0 0 #f3f3f3;}
+.top-menu .user-info-menu .menu-arrow{background:url("/Content/images/home/user-menu-arrow.png") no-repeat scroll 50% 0;height:7px;left:50%;margin-left:-15px;position:absolute;top:-7px;width:30px;}
+/*个人信息中心 下拉结束*/
+/*下拉 网站导航*/
+.menu-nav{position:relative;}
+.menu-nav .menu-bd{border-left:#eee 1px solid;border-bottom:#eee 1px solid;border-right:#eee 1px solid;display:none;z-index:1;right:0px;background:#fff;position:absolute;width:250px;z-index:10001;}
+.menu-nav .menu-bd-panel{padding:0 10px;}
+.menu-nav .menu-bd dl{border-bottom:1px solid #eee;padding:10px 0;}
+.menu-nav .menu-bd dl.last{border-width:0;}
+.menu-nav .menu-bd dt{font-weight:bold;line-height:25px;text-align:left;}
+.menu-nav .menu-bd dd a{margin-right:5px;}
+/*三角形*/
+.menu-nav .arrow,.user-Info .arrow {border-color:#8c8c8c transparent transparent;border-style:solid;border-width:5px;display:inline-block;height:0;margin:0 3px;vertical-align:middle;width:0;margin-top:2px;}
+.menu-nav:hover .menu-bd{display:block;}
+.menu-nav:hover .menu-hd{background:none repeat scroll 0 0 #fff;height:35px;border-top:1px solid #eee;border-left:1px solid #eee;border-right:1px solid #eee;border-bottom:0 none #fff;line-height:33px;}
+.menu-nav:hover .arrow{margin-right:2px;}
+.menu-nav:hover .menu-hd s{border-left:0px solid #ddd;padding-left:12px;}
+/*下拉 网站导航 结束*/
+
+/*底部 版权*/
+.footer-message{text-align:center;padding:20px 0;}
+.footer-message,.footer-message a{font-size:12px;color:#a0a0a0;}
+.footer-message ul{display:inline-block;*display:inline;zoom:1;}
+.footer-message li{display:inline;float:left;line-height:24px;}
+.footer-message p{line-height:24px;}
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*底部 开始*/
+.footer{width:100%;height:220px;border-top:3px solid #E02F2F;background:none repeat scroll 0 0 #FFFFFF;font-size:12px;}
+.block_footer{width:940px;}
+.block_footer li{border-right:1px solid #e1e1e1;padding:20px 0 0 20px;height:218px;float:left;}
+.footer .block_footer ul .length_1{width:110px;}
+.footer .block_footer ul .length_2{width:140px;}
+.footer .block_footer ul .length_3{width:210px;}
+.footer .block_footer ul .length_4{width:250px;}
+.footer .block_footer ul li h4{font-weight:400;height:30px;font-size:16px;margin-top:5px;}
+.footer .block_footer ul li p{line-height:24px;}
+.footer .block_footer ul li dd{height:16px;line-height:16px;padding:10px 0 0 20px;}
+.footer .block_footer ul li p span{color:#E02F2F;}
+.block_footer img{padding-top:8px;}
+.block_footer ul li dl dt{padding:0 0 0 20px;}
+.block_footer ul li dl dd{padding:10px 0 0 10px;}
+/*设备*/
+.footer .block_footer li.length_4{border:medium none;}
+.block_footer .length_4 a{background:url("/Content/images/shop/icon_device_bottom.png") no-repeat;float:left;height:52px;margin-right:11px;width:38px;}
+.block_footer a.wp{background-position:-98px 0;}
+.block_footer a.android{background-position:-49px 0;}
+.block_footer .weixin{clear:left;height:100px;line-height:20px;overflow:hidden;padding-top:10px;}
+.block_footer .weixin img{display:inline;float:left;height:78px;margin:3px 10px 0 0;}
+.block_footer .weixin .winxin-search{padding-top:10px;}
+/*设备结束*/
+
+/*****************************其它******************************/
+/*模态框需要验证的*号*/
+ .modal-dialog em{color:red;display:inline-block;text-align:center;vertical-align:middle;width:18px;}
+
+/*登陆模态框*/
+.LoginDialog{font-size:12px;line-height:18px;padding:20px;}
+.LoginDialog .light-login-box{padding:10px 10px 3px;position:relative;}
+.LoginDialog .bd-left{width:300px;}
+.LoginDialog .bd-right .coop{border-left:1px dashed #ddd;padding-left:30px;width:175px;}
+.LoginDialog .bd-right .coop .tit{margin:10px 0;font-size:16px;}
+.LoginDialog .bd-right .coop li{padding:5px 0;}
+.LoginDialog .bd-right .coop li a{width:80px;}
+
+/*分页统一显示右边*/
+.pagination-container {text-align: right;}

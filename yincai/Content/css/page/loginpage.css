@@ -1,0 +1,37 @@
+
+body{background:#fff;}
+.contentWrap{margin:0 auto;width:980px;border-bottom:1px solid #ddd;}
+.header{height:60px;}
+.header_logo_link{margin:10px 0 0 20px;background:url(/Content/images/home/logo.png) no-repeat;width:132px;height:39px;}
+.header_logo_title_leftSpace,.header_logo_title_rightSpace{font-size:1px;}
+.header_logo_title_sep{font-size:18px;}
+.header_logo_title{color:#666666;font-size:18px;line-height:62px;}
+.header_links{font-size:12px;color:#898989;margin-top:20px;}
+.main{margin:30px 0;margin-bottom:50px;min-height:330px;}
+.advertiseOne{background:url("/Content/images/home/advertiseOne.png") no-repeat;*background:url("/Content/images/home/advertiseOne.png") no-repeat;}
+.main_right{margin-left:640px;border:1px solid #f6f6f6;border-style:none none solid solid;overflow:hidden;}
+.login{border:1px solid #d1d1d1;}
+.login-part{padding:19px 29px 15px 29px;}
+.login_title{font-size:16px;height:16px;line-height:16px;color:black;font-weight:bold;margin-bottom:20px;}
+.login .line{background:none repeat scroll 0 0 #d1d1d1;height:1px;}
+
+/*µ×²¿*/
+.footer{height:144px;background:#fff;padding-top:1px;}
+/*ÓÒ±ßµÇÂ½¿ò*/
+.login-content{width:100%;}
+.login-content p{font-size:12px;margin:0;padding:0;list-style:none;}
+.login-content .validation-summary-errors{color:#ff7326;display:block;font-size:12px;}
+.login-content .pass-form-item{margin-bottom:20px;display:block;position:relative;clear:both;}
+.login-content .pass-text-input{width:266px;_width:262px;padding:0 5px 0 5px;font-family:'ËÎÌå';float:left;display:inline;border-left:1px solid #ccc;border-top:1px solid #ccc;border-right:1px solid #ddd;border-bottom:1px solid #ddd;background-color:#fff;height:38px;font-size:14px;color:#333;line-height:38px;-webkit-transition-property:all;-webkit-transition-duration:.5s;-moz-transition-property:all;-moz-transition-duration:.5s;-o-transition-property:all;-o-transition-duration:.5s;transition-property:all;transition-duration:.5s;}
+.login-content .pass-form-item-submit{height:34px;line-height:34px;margin-bottom:15px;margin-left:0;}
+.login-content .pass-button-submit{background:url(/Content/images/home/login_buttons.png) no-repeat;width:280px;height:40px;border:none;color:#FFF;background-position:-7px -4px;font-family:'Microsoft YaHei';font-size:20px;letter-spacing:3px;}
+.login-content .pass-button-submit:hover{background-position:-7px -51px;}
+.login-content .pass-button-submit:active{background-position:-7px -99px;}
+/*×¢²áÓëÍü¼ÇÃÜÂë*/
+.login_bottom{margin-top:5px;}
+.login_bottom .btn-sm{width:80px;margin-right:10px;}
+/*µÚÈý·½µÇÂ½*/
+.login .third-part{padding:10px 52px 15px 30px;}
+.third-part ul{margin-top:15px;}
+.third-part li{float:left;padding-right:20px;}
+.third-part .btn-sm{padding:0 10px;width:100px;}

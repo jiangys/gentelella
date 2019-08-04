@@ -1,0 +1,21 @@
+﻿/*头部样式*/
+.nav .menu li a.jifen{background: none repeat scroll 0 0 #A40000;}
+
+.content-wrap{margin:20px 0;}
+.listcon{background:none repeat scroll 0 0 #ffffff;border-color:#e6e6e6;border-radius:5px;border-style:solid;border-width:1px;margin-top:-3px;padding-top:20px;min-height:400px;}
+.item_list li{border:1px solid #e7e7e7;border-radius:5px;float:left;height:242px;margin-bottom:20px;margin-left:27px;width:447px;}
+.item_list li .content_l{border-right:1px solid #e7e7e7;float:left;}
+.item_list li .content_l img{border:0 none;border-radius:5px 0 0 5px;height:240px;width:240px;}
+.item_list li .content_r{margin-left:230px;padding:30px 25px;}
+.content_r_top{height:150px;}
+.content_r_top .need b{color:#fc7050;font-size:24px;}
+.content_r_top .need{margin-top:-5px;}
+.content_r h1{margin-bottom:10px;font-size:40px;}
+.content_r h1 a{color:#000000;display:inline-block;font-size:14px;/*height:20px;*/
+ overflow:hidden;}
+.content_r span{color:#909090;display:block;margin-bottom:8px;}
+.content_r .submitbtn{background:none repeat scroll 0 0 #fc7050;border-radius:5px;color:white;display:inline-block;margin-top:30px;padding:5px 12px;}
+/*分页*/
+.listcon .listcon_page{margin:0 30px 20px 0;}
+
+.item-empty-tips { margin:50px 0 0 200px;}

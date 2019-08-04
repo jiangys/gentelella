@@ -1,0 +1,51 @@
+
+/*.blk_18
+{
+    font-size: 12px;
+    background: #fff;
+    overflow: hidden;
+    width: 980px;
+    padding: 20px 0; 
+    zoom: 1;
+}*/
+.blk_18 .pcont
+{
+    float: left;
+    overflow: hidden;
+    width: 870px;
+}
+.blk_18 .ScrCont
+{
+    width: 32766px;
+    zoom: 1;
+}
+.blk_18 #List1_1
+{
+    float: left;
+}
+.blk_18 #List2_1
+{
+    float: left;
+}
+.blk_18 .LeftBotton
+{
+    background: url(/Content/images/shop/index/slider-left.jpg) no-repeat;
+    float: left;
+    margin: 120px 7px;
+    width: 20px;
+    height: 35px;
+    cursor: pointer;
+}
+/*.blk_18 .LeftBotton:hover{
+    background-color:#f5f5f5;
+
+
+}*/
+.blk_18 .RightBotton
+{
+    background: url(/Content/images/shop/index/slider-right.jpg) no-repeat;
+    float: left;
+    margin: 120px 7px;
+    width: 20px;
+    height: 35px;
+}

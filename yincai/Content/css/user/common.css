@@ -1,0 +1,18 @@
+﻿
+ /*左边导航*/
+.user-content{background:none repeat scroll 0 0 #f2f2f2;border:1px solid #e5e5e5;margin:30px 0;}
+.user-content .user-menu{float:left;width:180px;}
+.user-menu .menu-wrap{padding:1px 0;}
+.user-title{border-bottom:1px solid #e5e5e5;height:60px;}
+.user-title H4{line-height:60px;font-weight:600;padding-left:30px;}
+.user-menu .menu-wrap .menu_sec{margin:10px 0 20px;}
+.user-menu .menu-wrap .menu_sec .menu_title{color:#323440;cursor:pointer;font-size:16px;font-weight:700;padding:8px 0 8px 30px;}
+.user-menu .menu-wrap .menu_sec li{color:#323440;cursor:pointer;font-size:14px;font-weight:400;padding:8px 0 8px 40px;text-decoration:none;}
+/*.user-menu .menu-wrap .menu_sec li.selected{background:none repeat scroll 0 0 #fff;border-bottom:1px solid #e5e5e5;border-left:3px solid #e95c00;border-top:1px solid #e5e5e5;padding:8px 0 8px 37px;}*/
+/*右边*/
+.user-detail{background:none repeat scroll 0 0 #fff;float:left;padding:0 30px 30px;width:958px;min-height:650px;}
+/*右边标题*/
+.user-title h5{padding-top:30px;font-size:16px;}
+.user-title .order-list-type{padding-top:32px;}
+/*内容*/
+.user-body {margin-top: 15px;}

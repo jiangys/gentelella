@@ -1,0 +1,15 @@
+﻿.wrapper{padding:30px 0;}
+.reg-content{position:relative;background-color:#ffffff;border:1px solid #e1e1e1;/*border:1px solid rgba(0,0,0,0.2);*/
+ border-radius:6px;background-clip:padding-box;outline:0;}
+.reg-header{border-bottom:1px solid #e5e5e5;min-height:16.4286px;padding:15px 15px 15px 20px;}
+.reg-body{padding:40px 0;}
+.reg-body label{font-weight:normal;}
+.reg-body .form-group{margin-bottom:20px;}
+.reg-body .reg-body-l{float:left;padding-left:30px;width:650px;}
+.reg-body .reg-body-r{float:left;padding:20px 0 20px 40px;width:280px;border-left:1px dashed #ddd;}
+.reg-body-r h4{margin-bottom:20px;}
+.reg-body-r li a{width:120px;height:40px;}
+.reg-body-r ul li{margin-bottom:10px;}
+.reg-body-r li .iconfont{font-size:20px;padding-right:5px;}
+.reg-body-r h5{margin-top:30px;}
+.reg-body-r .cBlue{color:#e95c00;}

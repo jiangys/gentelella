@@ -1,0 +1,41 @@
+﻿ /*填写并核对订单信息*/
+.pay-method h3.title{/*border-bottom:2px solid #CFCFCF;*/font-size:16px;font-weight:bold;padding-bottom:10px;}
+.shopcarbk{background-color:#fff;border:1px solid #dcdcdc;margin-top:15px;padding:30px 25px;}
+.pay-address,.pay-confirm,.pay-print{margin-bottom:20px;}
+.pay-address-select{border:1px solid #e2e2e2;}
+/*配送信息*/
+.xm-address-list{width:940px;}
+.xm-address-list .item{background:none repeat scroll 0 0 #fafafa;border:1px solid #dcdcdc;cursor:pointer;float:left;height:170px;margin:0 13px 10px 0;padding:10px 18px;position:relative;width:300px;}
+.xm-address-list .item:hover{background:none repeat scroll 0 0 #f3f3f3;}
+.xm-address-list .item dt{border-bottom:1px solid #dfdfdf;color:#333;height:30px;line-height:30px;margin:0 0 10px;font-weight:400;}
+.xm-address-list .item dt strong{float:left;font-weight:400;}
+.xm-address-list .item dt .tag{background:none repeat scroll 0 0 #dcdcdc;font-size:12px;height:18px;line-height:20px;margin-top:6px;padding:0 10px;}
+.xm-address-list .item dt span{float:right;}
+.xm-address-list .item dd{color:#6d6d6d;line-height:1.6;margin:0;font-size:14px;}
+.xm-address-list .item .edit-btn{border:1px solid #dfdfdf;color:#333;cursor:pointer;display:none;font-size:12px;/*height:18px;*/
+ line-height:18px;margin-top:8px;text-align:center;width:58px;}
+/*当选中的时候*/
+ .xm-address-list .selected{background:none repeat scroll 0 0 #fff;border-color:#ff4a00;cursor:default;}
+ .xm-address-list .selected:hover {background: none repeat scroll 0 0 #fff;}
+.xm-address-list .selected .edit-btn{background:none repeat scroll 0 0 #f3f3f3;display:block;}
+/*新的收货地址*/
+ .xm-address-list .use-new-addr{color:#8c8c8c;text-align:center;}
+.xm-address-list .use-new-addr .icon-add{display:block;font-size:30px;font-weight:normal;margin-top:30px;}
+/*显示更多*/
+ .addr-list-toggle-wrap{border-top:1px solid #dfdfdf;display:block;height:20px;margin-top:10px;position:relative;text-align:center;}
+.addr-list-toggle-wrap span{border-color:#fff #dcdcdc #dcdcdc;border-image:none;border-right:1px solid #dcdcdc;border-style:solid;border-width:1px;cursor:pointer;display:block;/*height:18px;*/
+ left:50%;line-height:1;margin-left:-50px;position:absolute;text-align:center;top:-1px;width:98px;}
+.addr-list-toggle-wrap span .arrow{font-size:16px;}
+.addr-list-toggle-wrap .on .arrow {display: inline-block;transform: rotate(180deg);}
+/*配送信息 结束*/
+.pay-confirm .subprice{font-size:16px;font-weight:600;}
+/*确认订单信息*/
+.confirm-order-tab{border:1px solid #E2E2E2;border-collapse:collapse;border-spacing:0;font-size:14px;}
+.confirm-order-tab th{background-color:#F2F2F2;color:#999999;padding:10px 20px;text-align:center;}
+.confirm-order-tab td{border:1px solid #E2E2E2;padding:15px 20px;}
+.pay-confirm .infor{font-size:14px;text-align:right;}
+.pay-confirm .infor .item{margin-right:20px;}
+.pay-confirm .infor .allprice{font-weight:bold;}
+.pay-confirm .infor .allprice .price{color:#FF6600;font-size:22px;}
+/*返回重新下单*/
+/*填写并核对订单信息*/

@@ -1,0 +1,102 @@
+/*头部样式*/
+.nav .menu li a.home{background:none repeat scroll 0 0 #A40000;}
+/* 中间部分 */
+#myFocus .pic img{width:690px;height:300px;}
+/*ad(广告)开始*/
+/* middle ad */
+/* hot ad */
+.box_hot{width:690px;height:160px;position:relative;overflow:hidden;border-bottom:1px solid #eee;}
+.picbox{width:690px;height:160px;overflow:hidden;position:relative;}
+.piclist{height:160px;position:absolute;left:0px;top:0px;}
+.piclist li{background:#fff;float:left;border-right:1px solid #eee;}
+.swaplist{position:absolute;left:-3000px;top:0px}
+.og_prev,.og_next{width:30px;height:50px;background:url(/Content/images/shop/index/icon.png) no-repeat;background:url(/Content/images/shop/index/icon_ie6.png) no-repeat\9;position:absolute;top:55px;z-index:99;cursor:pointer;/*filter:alpha(opacity=7);opacity:0.7;*/}
+.og_prev{background-position:0 -60px;left:4px;}
+.og_next{background-position:0 0;right:4px;}
+/* hot ad end*/
+.content-wrap .block_ad_left{float:left;width:690px;}
+.content-wrap .block_ad_right{float:right;width:250px;}
+.content-wrap .block_ad_right .ad_new,.content-wrap .block_ad_right .ad_new2,.content-wrap .block_ad_right .ad_new3{width:248px;}
+.content-wrap .block_ad_right .ad_new{margin-top:10px;background-color:#fff;height:30px;padding-top:8px;padding-left:15px;font-weight:600;font-size:14px;color:#999999;margin-bottom:10px;border:1px solid #CCCCCC;}
+.content-wrap .block_ad_right .ad_new1{height:150px;border:1px solid #eee;padding:15px;background:url("/Content/images/shop/ad_time.png") no-repeat;}
+.ad_title{color:#FE6B23;font-size:14px;margin-bottom:5px;}
+.ad_title h4 {font-size:16px;}
+.ad_content{color:green;font-size:18px;}
+.content-wrap .block_ad_right .ad_new2{height:150px;background-color:#fff;line-height:20px;border-image:none;border-style:none solid solid;border-color:#ececec;border-width:0 1px 1px;}
+.ad_new2 .announce h2{font-size:14px;font-weight:bold;margin-bottom:10px;background-color:#f7f7f7;line-height:35px;padding-left:10px;}
+.ad_new2 .announce ul li{font-size:12px;list-style:disc inside none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:24px;padding:0 15px;}
+.content-wrap .block_ad_right .ad_new3{height:160px;width:248px;border-image:none;border-style:none solid solid;border-color:#ececec;border-width:0 1px 1px;}
+.content-wrap .block_ad_right .ad_new3 img{height:158px;width:248px}
+/*ad(广告)结束*/
+/*product(产品)列表开始*/
+.content-wrap .block_product{margin-top:10px;}
+.content-wrap .block_product .block_product_top{border-bottom:2px solid #bfbfbf;height:33px;width:940px;}
+.block_product .more{display:inline-block;float:right;font-size:12px;font-weight:400;overflow:hidden;text-align:right;white-space:nowrap;padding-top:5px;}
+.block_product_title{color:#686666;font-size:18px;font-weight:600;height:30px;}
+.block_product_top .more a.btn:hover{background:none repeat scroll 0 0 #e4393c;border-color:#e4393c;color:#fff;text-decoration:none;}
+/*今日推荐 开始*/
+.block_product .fenlei{color:#e3393c;}
+.block_product .tscroll{background:none repeat scroll 0 0 #fff;border-color:#FF6666 #dad9d9 #dad9d9;border-image:none;border-right:1px solid #dad9d9;border-style:solid;border-width:2px 1px 1px;height:295px;margin:0 auto;overflow:hidden;position:relative;width:940px;}
+.block_product .tscroll li.item{float:left;position:relative;width:218px;padding:20px 25px;font-size: 12px;}
+.block_product .tscroll li.item .good-name{height:32px;line-height:16px;margin:5px 0 2px;overflow:hidden;}
+.block_product .tscroll li.item .sn-price{color:#d00;}
+.block_product .tscroll li.item .sn-price i{font:12px Arial;}
+.block_product .tscroll li.item .sn-price em{font:14px Tahoma;}
+.block_product .tscroll li.item .good-info{color:#888;}
+/*今日推荐 结束*/
+/*产品列表 start*/
+/*产品列表为空*/
+.block_product_empty{background-color:#ffffff;border:1px solid #eee;margin-bottom:30px;min-height:500px;overflow:hidden;padding:15px 15px 30px;border-color:#ff6666 #dad9d9 #dad9d9;border-image:none;border-style:solid;border-width:2px 1px 1px;color:#666666;font-size:22px;margin-top:70px;padding-left:150px;}
+/* 搜索产品列表为空*/
+.product-enpty{background-color:#ffffff;min-height:20px;overflow:hidden;padding:15px 15px 30px;margin-bottom:30px;border:1px solid #eee;}
+.product-enpty-tip{color:#666666;font-size:22px;margin-top:20px;padding-left:280px;}
+/* 结束 搜索产品列表为空*/
+.content-wrap .block_product .block_product_list{width:955px;}
+.block_product_list li.item{background:none repeat scroll 0 0 #fff;border-color:#e5e5e5;border-image:none;border-style:solid;border-width:1px 1px 2px;float:left;margin:10px 13px 5px 0;position:relative;width:224px;height:338px;padding:1px;}
+.block_product_list li.item:hover{border:2px solid #FF6666;padding:0;}
+.block_product_list li.item .searchBang{display:block;height:60px;margin:0 5px;position:absolute;right:0;top:5px;width:50px;z-index:1;}
+.block_product_list li.item img{border:1px solid #fff;display:block;margin:10px auto;overflow:hidden;}
+.block_product_list li.item .inforBg{margin:10px 0 0;padding:0 15px 4px;}
+.block_product_list li.item .inforBg h3{font-size:12px;height:24px;line-height:24px;overflow:hidden;}
+/*价格*/
+.block_product_list .item-prices .price{font-size:20px;font-weight:400;line-height:30px;padding-right:1px;color:#E02F2F;float:left;font-family:Tahoma;font-weight:700;}
+.block_product_list li .item-prices .price i{font-family:"Microsoft Yahei","Hiragino Sans GB",Arial;font-style:normal;font-weight:400;margin-right:1px;}
+.block_product_list .dock{line-height:25px;display:inline-block;padding-top:5px;color:#555;padding-left:3px;}
+.block_product_list li span.orig-price{color:#888;font-size:14px;left:6px;top:18px;position:absolute;text-align:center;text-decoration:line-through;}
+.block_product_list .sold-num{bottom:3px;line-height:20px;text-align:center;padding:13px 0 0;color:#555;font-size:12px;}
+/*价格 结束*/
+.inforBg .comment{padding:2px 0;font-size:12px;}
+.inforBg .comment p{float:left;padding-right:5px;color:#005aa0;overflow:hidden;}
+.inforBg .comment .tip{float:right;}
+/*购买与加入购物车按钮*/
+ .block_product_list li.item .opre li{float:left;height:36px;margin:0;}
+.block_product_list li.item .opre a{background:none repeat scroll 0 0 #f6f6f6;border-right:1px solid #dadada;border-top:1px solid #e5e5e5;display:block;float:left;height:33px;line-height:33px;text-align:center;text-decoration:none;width:110px;}
+.block_product_list li.item .opre a.last{border-right:medium none;padding-right:1px;}
+/*购买与加入购物车按钮 结束*/
+.moredetail{background:none repeat scroll 0 0 #ededed;color:#666;display:block;font-size:16px;font-weight:400;height:40px;line-height:40px;margin:5px 0 20px;text-align:center;border:1px solid #EEEEEE;}
+.moredetail:hover{background-color:#E02F2F;display:block;color:#FFFFFF;text-decoration:none;}
+/*product(产品)列表结束*/
+/*中间部分结束*/
+/*返回顶部*/
+/**html{background-image:url(about:blank);background-attachment:fixed;}
+*/
+/*解决IE6下滚动抖动的问题*/
+/*解决IE6下不兼容 position:fixed 的问题*/
+#code,#code_hover,#gotop{width:36px;height:48px;background:url(../images/iconBackTop.png) no-repeat;position:fixed;right:0px;cursor:pointer;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+#code{background-position:-276px -258px;bottom:63px;_margin-bottom:63px;}
+#code_hover{background-position:-316px -258px;bottom:63px;_margin-bottom:63px;}
+#gotop{background-position:-276px -310px;bottom:10px;_margin-bottom:0px;}
+#code_img{width:270px;height:355px;background:url(../images/iconBackTop.png) -4px -3px no-repeat;position:fixed;right:40px;bottom:10px;cursor:pointer;display:none;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));_margin-bottom:67px;z-index:100000}
+/*返回顶部 结束*/
+
+
+
+/*category 产品类别显示*/
+.menu_category{background:none repeat scroll 0 0 #fff;border:1px solid #ddd;width:940px;height:44px;padding-left:20px;}
+.menu_category h5{display:block;float:left;font-weight:700;line-height:42px;width:50px;}
+.menu_category .btn_order{float:left;height:25px;margin:9px 0;padding-left:1px;}
+.menu_category .btn_order a{border:1px solid #ddd;display:block;float:left;height:23px;line-height:22px;margin-right:5px;padding:0 10px;}
+.menu_category .btn_order a.rel{background:none repeat scroll 0 0 #e33b3b;color:#fff;font-weight:700;}
+.block_product_list{margin-bottom:20px;}
+
+/*category 产品类别显示 结束*/
