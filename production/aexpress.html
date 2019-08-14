@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gentelella Alela! | </title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+ 
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .message_wrapper {
+      margin-bottom: 20px;
+    }
+
+    /* Common styles for all types */
+    .bs-callout {
+      padding: 20px;
+      border: 1px solid #eee;
+      border-left-width: 5px;
+      border-radius: 3px;
+    }
+
+    .bs-span span {
+      margin-right: 10px;
+    }
+
+    .bs-callout h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    .bs-callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bs-callout code {
+      border-radius: 3px;
+    }
+
+    /* Tighten up space between multiple callouts */
+    .bs-callout+.bs-callout {
+      margin-top: -5px;
+    }
+
+    /* Variations */
+    .bs-callout-danger {
+      border-left-color: #ce4844;
+    }
+
+    .bs-callout-danger h4 {
+      color: #ce4844;
+    }
+
+    .bs-callout-warning {
+      border-left-color: #aa6708;
+    }
+
+    .bs-callout-warning h4 {
+      color: #aa6708;
+    }
+
+    .bs-callout-info {
+      border-left-color: #1b809e;
+    }
+
+    .bs-callout-info h4 {
+      color: #1b809e;
+    }
+
+    .message_title {
+      width: 30%;
+      float: left;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script>
+
+
+
+  </script>
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>订单详情 <small>部分信息要修改，请点右边的<mark>修改</mark>按钮</small></h2>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default btn-sm"
+                                id="productSubClassAdd">
+                            <i class="fa fa-reply"></i> 返回订单列表
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                      <table class="table  table-bordered">
+                          <thead>
+                            <tr>
+                              <th>快递名称</th>
+                              <th>费用列表</th>
+                              <th>是否开启</th>
+                              <th>操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <tr>
+                              <td>顺丰快递</td>
+                              <td>
+                                  <table class="table  table-bordered">
+                                      <thead>
+                                          <tr>
+                                              <th>运送到</th>
+                                              <th>首件数(件)</th>
+                                              <th>首费(元)</th>
+                                              <th>续件数(件)</th>
+                                              <th>续费(元)</th>
+                                            </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>广东省</td>
+                                          <td>7.00</td>
+                                          <td>30</td>
+                                          <td>2.00</td>
+                                          <td>20</td>
+                                        </tr>
+                                        <tr>
+                                          <td>湖南省</td>
+                                          <td>7.00</td>
+                                          <td>30</td>
+                                          <td>2.00</td>
+                                          <td>20</td>
+                                        </tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                      </tbody>
+                                    </table>
+                              </td>
+                              <td>开启</td>
+                              <td>删除</td>
+                            </tr>
+
+                            <tr>
+                                <td>申通快递</td>
+                                <td>
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>运送到</th>
+                                            <th>首件数(件)</th>
+                                            <th>首费(元)</th>
+                                            <th>续件数(件)</th>
+                                            <th>续费(元)</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>广东省</td>
+                                            <td>7.00</td>
+                                            <td>30</td>
+                                            <td>2.00</td>
+                                            <td>20</td>
+                                          </tr>
+                                          <tr>
+                                            <td>湖南省</td>
+                                            <td>7.00</td>
+                                            <td>30</td>
+                                            <td>2.00</td>
+                                            <td>20</td>
+                                          </tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                          <tr><td>上海</td><td>7.00</td><td>30</td><td>2.00</td><td>20</td></tr>
+                                        </tbody>
+                                      </table>
+                                </td>
+                                <td>开启</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs doEdit" data-id="1"><i class="fa fa-pencil"></i> 编辑 </button>
+                                    <button class="btn btn-danger btn-xs doDel" data-id="1"><i class="fa fa-trash-o"></i> 删除 </button>
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
+</body>
+
+</html>
