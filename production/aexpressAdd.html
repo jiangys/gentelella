@@ -27,52 +27,26 @@
   <script>
 
 $(function () {
-      $("#product-submit").click(function () {
+      $("#express-submit").click(function () {
         var skus = [];
-        var productAttr = [];
-        var colorid = $("#colorlist").attr("data-id");
-        var sizeid = $("#sizelist").attr("data-id");
-        $('#skulist tr').each(function () {
-          var color = $(this).find('.sku-item-color').attr('data-color');
-          var size = $(this).find('.sku-item-size').attr('data-size');
+        $('#expresslist tr').each(function () {
+          var areaid = $(this).find(".express-item-AreaName").attr("data-areaid");
+          var areaname = $(this).find(".express-item-AreaName").attr("data-areaname");
+          var firstmaxcount = $(this).find('.express-item-FirstMaxCount input').val();
+          var firstweight = $(this).find('.express-item-FirstWeight input').val();
+          var additionalunit = $(this).find('.express-item-AdditionalUnit input').val();
+          var additionalweight = $(this).find('.express-item-AdditionalWeight input').val();
           // 插入SKU
           skus.push({
-            "Properties": colorid + ":" + color + ";" + sizeid + ":" + size,
-            "Price": $(this).find('.sku-item-price input').val(),
-            "Stock": $(this).find('.sku-item-stock input').val()
+            "AreaID": areaid,
+            "AreaName": areaname,
+            "FirstMaxCount": firstmaxcount,
+            "FirstWeight": firstweight,
+            "AdditionalUnit": additionalunit,
+            "AdditionalWeight": additionalweight,
           });
         });
-
-        // 插入颜色
-        $(":checkbox[name='color']:checked").each(function () {
-          productAttr.push({
-            "AttrID": colorid,
-            "AttrValueID": $(this).val()
-          });
-        });
-
-        // 插入尺码
-        $(":checkbox[name='size']:checked").each(function () {
-          productAttr.push({
-            "AttrID": sizeid,
-            "AttrValueID": $(this).val()
-          });
-        });
-
-      });
-
-      // 批量填充价格和库存
-      $("#skuFillSubmit").click(function () {
-        var price = $("#skuFillPrice").val();
-        var stock = $("#skuFillStock").val();
-        $('#skulist tr').each(function () {
-          if (price.length != 0) {
-            $(this).find('.sku-item-price input').val(price);
-          }
-          if (stock.length != 0) {
-            $(this).find('.sku-item-stock input').val(stock);
-          }
-        });
+    alert(JSON.stringify(skus));
 
       });
 
@@ -126,7 +100,7 @@ $(function () {
                         </tr>
 
                         <tr>
-                            <td class="express-item-AreaName" data-areaid="1" data-areaname="广东省">广东省</td>
+                            <td class="express-item-AreaName" data-areaid="2" data-areaname="胡南省">胡南省</td>
                             <td class="express-item-FirstMaxCount"><input class="form-control input-sm" type="number" placeholder="首件数(件)"></td>
                             <td class="express-item-FirstWeight"><input class="form-control input-sm" type="number" placeholder="首费(元)"></td>
                             <td class="express-item-AdditionalUnit"><input class="form-control input-sm" type="number" placeholder="续件数(件)"></td>
@@ -137,7 +111,7 @@ $(function () {
                     </table>
                   </div>
 
-                  <button type="submit" class="btn btn-primary">确认添加</button>
+                  <button type="submit" class="btn btn-primary" id="express-submit">确认添加</button>
                 </div>
               </div>
             </div>
