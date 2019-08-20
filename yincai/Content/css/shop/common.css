@@ -14,7 +14,7 @@
 .header .logo img{height:55px;}
 .header .logo_text{color:#333333;font-size:24px;width:250px;color:#d40000;font-style:normal;line-height:86px;}
 
-/*ËÑË÷ ¿ªÊ¼*/
+/*ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼*/
 .search-mod{margin-top:17px;overflow:hidden;margin-right:100px;width:450px;height:60px;}
 .search-mod .txt{border:2px solid #CC0000;color:#666;float:left;height:38px;line-height:24px;width:370px;outline:none;padding:5px 10px;}
 .search-mod .btn_search{background:none repeat scroll 0 0 #CC0000;border:medium none;color:#FFFFFF;cursor:pointer;float:right;font-size:16px;height:38px;overflow:hidden;width:80px;}
@@ -22,8 +22,8 @@
 .hot-search{line-height:24px;height:24px;font-size:12px;}
 .search-mod .hot-search a{padding-right:5px;color:#666}
 .search-mod .hot-search a:hover{color:#E60012;}
-/*ËÑË÷ ½áÊø*/
-/*¹ºÎï³µ ¿ªÊ¼*/
+/*ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
+/*ï¿½ï¿½ï¿½ï³µ ï¿½ï¿½Ê¼*/
 /*#cart{float:right;height:30px;width:126px;z-index:9;}
 #cart dt{background-color:#F7F7F7;background-position:-133px -56px;border:1px solid #EEEEEE;cursor:pointer;height:30px;position:absolute;text-align:center;width:74px;z-index:3;margin-top:25px;padding:0 20px 0 30px;}
 #cart dt .shopping{background-image:url("../images/icon.png");background-position:-133px -279px;color:#FFFFFF;left:20px;padding-left:6px;position:absolute;top:-13px;}
@@ -52,7 +52,7 @@
 .cart-section .mini-cart-list .count .total strong{color:#333;display:block;}
 .cart-section .mini-cart-list .count .total strong em{color:#ff4a00;font-style:normal;}
 .cart-section .mini-cart-list .count .btn{float:right;}
-/*¹ºÎï³µ ½áÊø*/
+/*ï¿½ï¿½ï¿½ï³µ ï¿½ï¿½ï¿½ï¿½*/
 .nav{background:none repeat scroll 0 0 #BB120F;height:40px;width:100%;margin:0;padding:0;}
 .nav .menu{display:inline;float:left;height: 40px;}
 .nav .menu li{float:left;}
@@ -61,7 +61,7 @@
 /*header end*/
 
 /*nav start*/
-/*×ó²àµ¼º½*/
+/*ï¿½ï¿½àµ¼ï¿½ï¿½*/
 .box_left{width:150px;float:left;}
 .side_nav{font-family:"Microsoft Yahei";height:40px;position:absolute;width:150px;cursor:pointer;/*left:50%;margin-left:-550px;*/}
 .side_nav .side_nav_title{background-position:0 -127px;}
@@ -75,36 +75,36 @@
 .side_nav .category li a{background:none repeat scroll 0 0 #ffffff;border-radius:3px;cursor:pointer;color:#666;padding:2px 12px;display:inline-block;}
 .side_nav .category .curr,.side_nav .category li a:hover{background:none repeat scroll 0 0 #E3393C;color:#ffffff;padding:2px 12px;text-decoration:none;}
 .side_nav .allSort_drop{display:none;}
-/*ÍùÏÂ¹Ì¶¨¹ö¶¯*/
+/*ï¿½ï¿½ï¿½Â¹Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½*/
  .fix-top{position:fixed !important;top:0 !important;}
-/*ËÑË÷¿ò*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .side_nav .search input.txt{padding:4px 0 4px 10px;background:#fff;height:30px;line-height:30px;border:1px solid #e5e5e5;width:85px;float:left;}
 .side_nav .search .smt{width:35px;height:30px;border:medium none;background:url("/Content/images/shop/icon_search.png") no-repeat #ee4743 center;cursor:pointer;float:left;}
 .side_nav .search .smt:hover{background-color:#ff7b78;}
 .side_nav .search{display:block;padding-left:15px;padding-top:10px;}
 .side_nav .nav_home{padding:5px 15px;text-align:left;}
 .side_nav .nav_home li{float:left;height:29px;line-height:30px;width:50%;}
-/*ÔÚÏß¿Í·þ*/
+/*ï¿½ï¿½ï¿½ß¿Í·ï¿½*/
  .side_nav .online_customer{background-color:#f4f4f4;border:1px solid #e2e2e2;height:27px;margin:0 10px 10px;position:relative;}
 .side_nav .online_customer .contact_w{background-position:-7px -158px;float:left;height:15px;margin:8px 0 0 10px;width:15px;}
 .side_nav .online_customer i{display:inline-block;background:url("/Content/images/shop/nav_bg.png") no-repeat;}
 .side_nav .online_customer span{color:#666;display:inline-block;font-size:12px;margin:6px 0 0 7px;width:70px;}
-/*ÔÚÏß¿Í·þ½áÊø*/
+/*ï¿½ï¿½ï¿½ß¿Í·ï¿½ï¿½ï¿½ï¿½ï¿½*/
 /*nav end*/
 
-/*ÓÒ±ß µ±Ç°Î»ÖÃµ¼º½*/
+/*ï¿½Ò±ï¿½ ï¿½ï¿½Ç°Î»ï¿½Ãµï¿½ï¿½ï¿½*/
 .page-nav{margin-bottom:8px;}
 .page-nav .next{padding:0 5px;}
-/*ÓÒ±ß ½áÊø µ±Ç°Î»ÖÃµ¼º½*/
+/*ï¿½Ò±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°Î»ï¿½Ãµï¿½ï¿½ï¿½*/
 
-/*µ×²¿ ¿ªÊ¼*/
+/*ï¿½×²ï¿½ ï¿½ï¿½Ê¼*/
 .footer{width:100%;height:220px;border-top:3px solid #E02F2F;background:none repeat scroll 0 0 #FFFFFF;font-size:12px;}
-.block_footer{width:940px;}
+.block_footer{width:1030px;}
 .block_footer li{border-right:1px solid #e1e1e1;padding:20px 0 0 20px;height:218px;float:left;}
-.footer .block_footer ul .length_1{width:110px;}
+.footer .block_footer ul .length_1{width:150px;}
 .footer .block_footer ul .length_2{width:140px;}
 .footer .block_footer ul .length_3{width:210px;}
-.footer .block_footer ul .length_4{width:250px;}
+.footer .block_footer ul .length_4{width:300px;}
 .footer .block_footer ul li h4{font-weight:400;height:30px;font-size:16px;margin-top:5px;}
 .footer .block_footer ul li p{line-height:24px;}
 .footer .block_footer ul li dd{height:16px;line-height:16px;padding:10px 0 0 20px;}
@@ -112,7 +112,7 @@
 .block_footer img{padding-top:8px;}
 .block_footer ul li dl dt{padding:0 0 0 20px;}
 .block_footer ul li dl dd{padding:10px 0 0 10px;}
-/*Éè±¸*/
+/*ï¿½è±¸*/
 .footer .block_footer li.length_4{border:medium none;}
 .block_footer .length_4 a{background:url("/Content/images/shop/icon_device_bottom.png") no-repeat;float:left;height:52px;margin-right:11px;width:38px;}
 .block_footer a.wp{background-position:-98px 0;}
@@ -120,18 +120,18 @@
 .block_footer .weixin{clear:left;height:100px;line-height:20px;overflow:hidden;padding-top:10px;}
 .block_footer .weixin img{display:inline;float:left;height:78px;margin:3px 10px 0 0;}
 .block_footer .weixin .winxin-search{padding-top:10px;}
-/*Éè±¸½áÊø*/
+/*ï¿½è±¸ï¿½ï¿½ï¿½ï¿½*/
 
 
-/*****************************ÆäËü******************************/
-/*¼ÆËã¼Û¸ñ*/
+/*****************************ï¿½ï¿½ï¿½ï¿½******************************/
+/*ï¿½ï¿½ï¿½ï¿½Û¸ï¿½*/
 /*.counter{float:left;width:113px;}*/
 .cart-num a{background-color:#f7f7f7;border:1px solid #d9d9d9;display:block;float:left;height:30px;width:28px;}
 .cart-num .minus i{background-position:-18px -246px;margin-top:11px;}
 .cart-num i{display:block;height:10px;margin:8px auto 0;width:10px;}
 .cart-num input{border-style:solid none;border-width:1px 0;border-color:#d9d9d9;float:left;height:30px; padding-top: 2px;text-align:center;width:50px;}
 .cart-num .plus i{background-position:-18px -231px;}
-/*¼ÆËã¼Û¸ñ end*/
-/*¼Û¸ñ×ÖÌå*/
+/*ï¿½ï¿½ï¿½ï¿½Û¸ï¿½ end*/
+/*ï¿½Û¸ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .Price-font {font-family: Helvetica,arial,sans-serif !important;}
 

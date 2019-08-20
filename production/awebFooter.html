@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>印彩云欢迎您 </title>
+  <link href="../yincai/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../yincai/Content/vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="../yincai/Content/iconfont/iconfont.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/base.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/site.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/shop/common.css" rel="stylesheet" />
+  <link href="../yincai/Content/css/page/footerserver.css" rel="stylesheet" />
+
+  <style>
+  .footer {
+margin-top: 30px;
+
+  }
+  </style>
+</head>
+
+<body>
+  <!-- topbar start-->
+  <div class="topbar">
+    <div class="w clearfix">
+      <ul class="top-menu fr clearfix">
+        <li><a target="_blank" id="registerLink" href="/Account/Register">注册</a></li>
+        <li><a id="loginLink" target="_blank" href="/Account/Login">登录</a></li>
+        <li><a href="/user/index"><i class="icon i-phone"></i><span>我的订单</span></a></li>
+        <li><a href="/home/download"><i class="icon i-phone"></i><span>手机版</span></a></li>
+      </ul>
+
+      <ul class="top-menu fl clearfix">
+        <li><a href="/" title="收藏印彩云" class="r_icon"><span>印彩云首页</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- topbar end-->
+
+  <!--头部导航-->
+  <div class="header">
+    <div class="w clearfix">
+      <div class="logo fl logo_text">
+        <h1><i class="fa fa-paw"></i><strong> 印彩云 </strong> </h1>
+      </div>
+      <div class="cart-section fr">
+        <a href="/shop/cart" class="mini-cart" id="J_miniCart">
+          <i class="iconfont">&#xe604;</i>购物车<span class="mini-cart-num cartNum" style="display: inline;"></span>
+        </a>
+        <div id="miniCartList" class="mini-cart-list">
+          <!--购物车数据，js动态加载-->
+        </div>
+      </div>
+      <div class="search-mod fr">
+        <form action="#" novalidate="novalidate" id="searchForm">
+          <p class="clear">
+            <input type="text" class="txt" id="keyword" name="keyword" placeholder="搜索关键词：T恤 POLO" value="">
+            <input type="button" class="btn_search" value="搜 索">
+          </p>
+        </form>
+        <p class="hot-search">
+          <a href="/shop/home/search?keyword=手机">T恤</a>
+          <a href="/shop/home/search?keyword=鞋子">POLO</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!--下拉导航-->
+<div class="nav">
+    <div class="w clearfix">
+        <ul class="menu">
+            <li><a href="#" title="首页" class="home">首页</a></li>
+            <li><a href="#" title="所有产品" class="life">所有产品</a></li>
+             <li><a href="/shop" title="马甲定制" class="food">马甲定制</a></li>
+            <li><a href="/shop/jifen" title="POLO衬定制" class="jifen">POLO衬定制</a></li>
+            <li><a href="/shop/guestbook" title="风衣定制" class="guestbook">风衣定制</a></li>
+            <li><a href="/shop/notice" title="帽子定制" class="notice">帽子定制</a></li>
+        </ul>
+    </div>
+</div>
+
+  <div class="wrapper">
+    <div class="container body-content">
+
+
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="w clearfix">
+        <div class="block_footer fr">
+            <ul>
+                
+                <li class="length_1">
+                    <h4>商务合作</h4>
+                    <p>微信：HKQ18181818</p>
+                    <p>售前微信：ST4854</p>
+                </li>
+                <li class="length_1">
+                    <h4>支付方式</h4>
+                    <p>支付宝支付</p>
+                    
+                </li>
+                <li class="length_3">
+                    <h4>下次怎么来？</h4>
+                    <p>记住域名：<span>yincaiun.com</span></p>
+                    <p>百度搜索：<span>印彩云</span></p>
+                    <p>收藏本站：<a href="javascript:void(0);" onclick="AddFavorite(window.location,document.title)" style="text-decoration:underline;">加入收藏</a></p>
+                </li>
+
+                <li class="length_4">
+                    <h4>联系我们</h4>
+                    <p><i class="fa fa-location-arrow"></i> 广州白云区同泰路1479号创意园3楼A2306</p>
+                    <p><i class="fa fa-phone-square"></i> 团体服装定制 个性服装定制</p>
+                    <p><i class="fa fa-home"></i> 设厂房 自设仓库</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="footer-message">
+  <p class="copyright">Copyright © 2019－2020 yincaiun. All Rights Reserved <a target="_blank" href="#">使用印彩云前必读</a> <a target="_blank" href="#">印彩云协议</a></p>
+  <p>
+      印彩云 版权所有 2014 <a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备19093314号-1</a>
+  </p>
+</div>
+
+  <script src="../yincai/Scripts/jquery-1.10.2.js"></script>
+  <script src="../yincai/Scripts/bootstrap.min.js"></script>
+  <script src="../yincai/Content/js/jquery_lazyload-1.9.3/jquery.lazyload.min.js"></script>
+  <script src="../yincai/Scripts/jquery.msgBox.js"></script>
+  <script src="../yincai/Scripts/jquery.msgProcess.js"></script>
+  <script src="../yincai/Content/js/code/com.js"></script>
+
+
+</body>
+
+
+</html>
