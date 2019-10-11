@@ -17,7 +17,7 @@
 /*流程结束*/
 /*购物车列表*/
 .alert {margin-bottom: 10px;margin-top: 5px;}/*购物车没货提示框*/
-.cart-list{background-color:#fff;border:1px solid #dcdcdc;padding:30px 25px 0;text-align:center;}
+/* .cart-list{background-color:#fff;border:1px solid #dcdcdc;padding:30px 25px 0;text-align:center;}
 .cart-list table .head{background-color:#e8e8e8;height:32px;}
 .cart-list table .left{float:none;text-align:left;}
 .cart-list table tbody tr{border-bottom:1px dashed #ccc;height:100px;}
@@ -26,7 +26,7 @@
 .cart-list table .deal img{height:70px;width:70px;}
 .cart-list table .gray{color:#999;}
 .cart-list table .red{color:#c00;}
-.cart-list table .counter{margin-left:15px;}
+.cart-list table .counter{margin-left:15px;} */
 /*购物车列表 结束*/
 /*提交按钮*/
 .buy{margin-top:15px;}

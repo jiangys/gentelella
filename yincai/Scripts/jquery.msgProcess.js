@@ -19,42 +19,6 @@
 
                 }
             },
-            //显示消息：如果有easyui，则调用easyui的message组件显示消息
-            //alertMsg: function (msg, title, funcSuc) {
-            //    //error,question,info,warning
-            //    if ($.messager) {
-            //        $.messager.alert(title, msg, "info", function () {
-            //            if (funcSuc) funcSuc();
-            //        });
-            //    } else {
-            //        alert(msg);
-            //        //alert(title + "\r\n     " + msg);
-            //        if (funcSuc) funcSuc();
-            //    }
-            //},
-            ////统一处理 返回的json数据格式
-            //procAjaxData: function (data, funcSuc, funcErr) {
-            //    if (!data || !data.Statu || data == undefined) {
-            //        return;
-            //    }
-            //    switch (data.Statu) {
-            //        case "ok":
-            //            if (data.Msg) { msgBox.showMsgOk(data.Msg, function () { if (funcSuc) funcSuc(data); }); }
-            //            else { if (funcErr) funcErr(data); }
-            //            break;
-            //        case "skip":
-            //            if (funcSuc) funcSuc(data);
-            //            else { if (funcErr) funcErr(data); }
-            //            break;
-            //        case "err":
-            //            if (data.Msg) { msgBox.showMsgErr(data.Msg); }
-            //            break;
-            //        case "nologin":
-            //            msgBox.showMsgOk(data.Msg, function () { if (window.top) window.top.location = data.BackUrl; else window.location = data.BackUrl; });
-            //            break;
-            //    }
-            //}
-
             /*
                1.0 处理 为 Ajax请求 规定的 Json格式数据
                    responseText : 响应报文字符串
@@ -95,27 +59,28 @@
                     //1.4根据 消息的状态 做不同处理
                     switch (msgObj.State) {
                         case 1://操作成功
-                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgOk(msgObj.Msg, function () {
-                                isFunc(funcOk)
-                            });
+                            if (isMsgBoxExist(msgObj.Msg)){
+                                $.msgBoxObj.showMsgSuccess(msgObj.Msg);
+                                setTimeout(function () { isFunc(funcOk); }, 2000);
+                            };
                             break;
                         case 2://操作因为某种原因失败（业务级：比如登陆密码错误）
-                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgErr(msgObj.Msg);
+                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgError(msgObj.Msg);
                             break;
                         case 3:// 没有登录
-                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgErr(msgObj.Msg, function () {
+                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgError(msgObj.Msg, function () {
                                 if (window.top) window.top.location = msgObj.BackUrl;
                                 else window.location = msgObj.BackUrl;
                             });
                             break;
                         case 4:// 没有权限
-                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgErr(msgObj.Msg, function () {
+                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgError(msgObj.Msg, function () {
                                 if (window.top) window.top.location = msgObj.BackUrl;
                                 else window.location = msgObj.BackUrl;
                             });
                             break;
                         case 5:// 异常
-                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgErr(msgObj.Msg);
+                            if (isMsgBoxExist(msgObj.Msg)) $.msgBoxObj.showMsgError(msgObj.Msg);
                             break;
 
                     }

@@ -284,7 +284,18 @@
           { "data": "first_name" },
           { "data": "last_name" },
           { "data": "position" },
-          { "data": "office" },
+          //{ "data": "office" },
+                     {
+                               data: "office",
+                               render: function (data, type, row, meta) {
+                                 if(data=="Edinburgh" ){
+return '<span class="label label-danger">已付款</span>';
+                                 } else {
+                                 return '<span class="label label-info">未付款</span>';
+                                 }
+                                   //return '<i class="fa fa-male"></i> ' + (data=="Edinburgh" ? "在线" : "离线");
+                               }
+                            },
           {
             "orderable": false,
             "data": null,
