@@ -53,11 +53,11 @@
 .cart-section .mini-cart-list .count .total strong em{color:#ff4a00;font-style:normal;}
 .cart-section .mini-cart-list .count .btn{float:right;}
 /*���ﳵ ����*/
-.nav{background:none repeat scroll 0 0 #BB120F;height:40px;width:100%;margin:0;padding:0;}
-.nav .menu{display:inline;float:left;height: 40px;}
-.nav .menu li{float:left;}
-.nav .menu li a{color:#FFFFFF;display:block;font-size:15px;line-height:40px;padding:0 15px;width:110px;text-align:center;}
-.nav .menu li a:hover{background:none repeat scroll 0 0 #A40000;text-decoration:none;}
+.header-nav{background:none repeat scroll 0 0 #BB120F;height:40px;width:100%;margin:0;padding:0;}
+.header-nav .menu{display:inline;float:left;height: 40px;}
+.header-nav .menu li{float:left;}
+.header-nav .menu li a{color:#FFFFFF;display:block;font-size:15px;line-height:40px;padding:0 15px;width:110px;text-align:center;}
+.header-nav .menu li a:hover{background:none repeat scroll 0 0 #A40000;text-decoration:none;}
 /*header end*/
 
 /*nav start*/

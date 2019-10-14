@@ -131,6 +131,26 @@
   line-height: normal;
 }
 
+ .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border-top: 1px solid #e3393c;
+}
+.nav-tabs li:first-child a ,.nav-tabs li:first-child a:focus,.nav-tabs li:first-child a:hover{
+            border-left: 0 none;
+        }
+
+        .nav-tabs li  a {
+            border-radius: 0;
+            border-top:0 none;
+        }
+
+  .detail-profile {
+    background-color: #FFFFFF;
+overflow: hidden;
+padding: 15px 15px 30px;
+min-height: 500px;
+  }
+
+
   </style>
 </head>
 
@@ -277,16 +297,30 @@
             </div>
 
             <div class="detail-box">
-              <div class="detail-navwarp">
+              <!-- <div class="detail-navwarp">
                 <div class="detail-nav" style="position: static; top: 0px;">
                   <ul>
                     <li class="current"><span><i>商品描述</i></span></li>
                   </ul>
                 </div>
-              </div>
-              <div class="detail-cen">
-                <div class="detail-cen-none">暂无商品描述</div>
-              </div>
+              </div> -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">商品描述</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">规格说明</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active detail-cen" id="home">
+                        <div class="detail-cen-none">暂无商品描述</div>
+                </div>
+                <div role="tabpanel" class="tab-pane detail-profile" id="profile">
+                    <div class="info-item fabric">
+                        <span class="item-title">重量</span>
+                        <span class="item-words">123</span>
+                    </div>
+                </div>
+            </div>
 
             </div>
           </div>
