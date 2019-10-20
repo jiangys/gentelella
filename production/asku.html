@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gentelella Alela! | </title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/custom_change.css" rel="stylesheet">
+
+  <link href="../yincai/Content/css/shop/selectcolor.css" rel="stylesheet" />
+
+  <style type="text/css">
+    .flat {
+      padding-right: 10px;
+    }
+
+    #skulist .hide {
+      display: none !important;
+    }
+
+    .product-radio,
+    .product-checkbox {
+      margin-top: 8px;
+    }
+
+    .product-radio .radio-item,
+    .product-checkbox .checkbox-item {
+
+      margin-right: 10px;
+    }
+
+    .sku-fill {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #skuFillSubmit {
+      margin-bottom: 0px;
+    }
+
+    .color-desc {
+      padding-top: 8px;
+    }
+
+    .color-select-list .select-color-block {
+      border: 1px solid #ddd;
+      width: 11px;
+      height: 11px;
+      display: inline-block;
+      margin-left: 10px;
+      margin-top: 12px;
+    }
+    .color-select-list-item {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .sell-color-checkbox-check-wrap {
+      width: 40px;
+      margin-right: 0;
+      height: 28px;
+      float: left;
+    }
+
+    .sell-color-checkbox-check-wrap .next-checkbox input[type="checkbox"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      margin: 0;
+    }
+
+    .sell-color-checkbox-item-color {
+      float: left;
+      margin-right: 8px;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script>
+
+
+    function addSkuHtml() {
+      // 缓存当前已经输入的价格和库存
+      var skusInput = [];
+      $('#skulist tr').each(function () {
+        skusInput.push({
+          "Properties": $(this).find('.sku-item-color').attr('data-color') + ":" + $(this).find('.sku-item-size').attr('data-size'),
+          "Price": $(this).find('.sku-item-price input').val(),
+          "Stock": $(this).find('.sku-item-stock input').val()
+        });
+      });
+
+      var skuHtml = ''
+      $('#skulist').html(skuHtml);
+
+      var currentSizeCount = 0;
+      var sizeCount = 0;
+      $(":checkbox[name='size']:checked").each(function () {
+        sizeCount++;
+      });
+
+      if (sizeCount == 0) {
+        return;
+      };
+
+      $(":checkbox[name='color']:checked").each(function () {
+        var selectColorId = $(this).val();
+        var selectColorName = $(this).attr('data-name');
+        currentSizeCount = 0;
+        $(":checkbox[name='size']:checked").each(function () {
+          currentSizeCount++;
+          var price = 0;
+          var stock = 0;
+          var properties = selectColorId + ":" + $(this).val();
+          // 获取当前已经输入的价格和库存
+          $.each(skusInput, function (index, data) {
+            if (data.Properties == properties) {
+              price = data.Price;
+              stock = data.Stock;
+            }
+          });
+
+          skuHtml += '<tr>';
+          if (currentSizeCount > 1) {
+            skuHtml += '   <td class="sku-item-color hide" data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          } else {
+            skuHtml += '   <td class="sku-item-color" rowspan=' + sizeCount + ' data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          }
+          skuHtml += '   <td class="sku-item-size" data-size="' + $(this).val() + '">' + $(this).attr('data-name'); +'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="' + price + '" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="' + stock + '" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '</tr>';
+        });
+      });
+      $('#skulist').html(skuHtml);
+    };
+
+    $(function () {
+      $("#product-submit").click(function () {
+        var skus = [];
+        var productAttr = [];
+        var colorid = $("#colorlist").attr("data-id");
+        var sizeid = $("#sizelist").attr("data-id");
+        $('#skulist tr').each(function () {
+          var color = $(this).find('.sku-item-color').attr('data-color');
+          var size = $(this).find('.sku-item-size').attr('data-size');
+          // 插入SKU
+          skus.push({
+            "Properties": colorid + ":" + color + ";" + sizeid + ":" + size,
+            "Price": $(this).find('.sku-item-price input').val(),
+            "Stock": $(this).find('.sku-item-stock input').val()
+          });
+        });
+
+        // 插入颜色
+        $(":checkbox[name='color']:checked").each(function () {
+          productAttr.push({
+            "AttrID": colorid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+        // 插入尺码
+        $(":checkbox[name='size']:checked").each(function () {
+          productAttr.push({
+            "AttrID": sizeid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+      });
+
+      // 批量填充价格和库存
+      $("#skuFillSubmit").click(function () {
+        var price = $("#skuFillPrice").val();
+        var stock = $("#skuFillStock").val();
+        $('#skulist tr').each(function () {
+          if (price.length != 0) {
+            $(this).find('.sku-item-price input').val(price);
+          }
+          if (stock.length != 0) {
+            $(this).find('.sku-item-stock input').val(stock);
+          }
+        });
+
+      });
+
+    });
+
+  </script>
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+
+            <form id="product-form" data-parsley-validate class="form-horizontal form-label-left">
+
+
+              <!--销售信息-->
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>销售信息 <small>没有的颜色和尺码，请到颜色和尺码管理中添加</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12" id="sizelist"
+                        data-id="2">颜色</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12 color-desc">
+                        选择标准颜色可增加搜索/导购机会，标准颜色还可填写颜色备注信息（偏深、偏亮等）
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                      </div>
+
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="color-select-list">
+                          <div class="color-select-list-item">
+                            <div class="sell-color-checkbox-check-wrap">
+                              <!-- <input type="checkbox" checked="checked" name="color" data-color="1" class="select-check">
+                              <div class="select-color-block"></div> -->
+                            </div>
+                            <div class="sell-color-checkbox-item-color">
+                              <input type="text" class="select-color" value="" style="margin: 5px;"
+                                readonly="readonly" />
+                              <input type="text" class="show-color" value="" style="margin: 5px;"
+                                placeholder="显示的颜色" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12" id="sizelist"
+                        data-id="2">尺码</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="product-checkbox">
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="5" data-name="S" class="flat"
+                              onclick="addSkuHtml()" /> S
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="6" data-name="L" class="flat"
+                              onclick="addSkuHtml()" /> L
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="7" data-name="XL" class="flat"
+                              onclick="addSkuHtml()" /> XL
+                          </span>
+                          <span class="checkbox-item">
+                            <input type="checkbox" name="size" value="8" data-name="XXL" class="flat"
+                              onclick="addSkuHtml()" /> XXL
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">SKU组合</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+
+                        <div class="form-inline sku-fill">
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillPrice" placeholder="价格">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillStock" placeholder="库存">
+                          </div>
+                          <button type="button" class="btn btn-default" id="skuFillSubmit">批量填充</button>
+                        </div>
+
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>颜色</th>
+                              <th>尺码</th>
+                              <th>价格</th>
+                              <th>库存</th>
+                            </tr>
+                          </thead>
+                          <tbody id="skulist">
+
+                            <tr>
+                              <td class="sku-item-color" data-color="1">红色</td>
+                              <td class="sku-item-size" data-size="5">L</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="sku-item-color" data-color="2">黑色</td>
+                              <td class="sku-item-size" data-size="6">XL</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+
+  <!-- Parsley -->
+  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+  <script src="../yincai/Scripts/jquery-1.10.2.js"></script>
+  <script>
+
+    function addSkuHtml() {
+      // 缓存当前已经输入的价格和库存
+      var skusInput = [];
+      $('#skulist tr').each(function () {
+        skusInput.push({
+          "Properties": $(this).find('.sku-item-color').attr('data-color') + ":" + $(this).find('.sku-item-size').attr('data-size'),
+          "Price": $(this).find('.sku-item-price input').val(),
+          "Stock": $(this).find('.sku-item-stock input').val()
+        });
+      });
+
+      var skuHtml = ''
+      $('#skulist').html(skuHtml);
+
+      var currentSizeCount = 0;
+      var sizeCount = 0;
+      $(":checkbox[name='size']:checked").each(function () {
+        sizeCount++;
+      });
+
+      if (sizeCount == 0) {
+        return;
+      };
+
+      $(":checkbox[name='color']:checked").each(function () {
+        var selectColorId = $(this).attr('data-color');
+        var selectColorName = $(this).parent().parent().find(".select-color").val();
+        currentSizeCount = 0;
+        $(":checkbox[name='size']:checked").each(function () {
+          currentSizeCount++;
+          var price = 0;
+          var stock = 0;
+          var properties = selectColorId + ":" + $(this).val();
+          // 获取当前已经输入的价格和库存
+          $.each(skusInput, function (index, data) {
+            if (data.Properties == properties) {
+              price = data.Price;
+              stock = data.Stock;
+            }
+          });
+
+          skuHtml += '<tr>';
+          if (currentSizeCount > 1) {
+            skuHtml += '   <td class="sku-item-color hide" data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          } else {
+            skuHtml += '   <td class="sku-item-color" rowspan=' + sizeCount + ' data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          }
+          skuHtml += '   <td class="sku-item-size" data-size="' + $(this).val() + '">' + $(this).attr('data-name'); +'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="' + price + '" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="' + stock + '" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '</tr>';
+        });
+      });
+      $('#skulist').html(skuHtml);
+    };
+    /*!
+  * selectColor.js
+  * Author: JSMask
+  * Date:	2017
+  */
+    var SelectColor = (function () {
+      var d = null;
+      var c = [];
+      var b = {
+        elem: ".select-color",
+        range: "|",
+        left: 0,
+        index: 0,
+        data: [{
+          colorName: "白色系",
+          colorNum: "rgb(255, 255, 255)",
+          colorList: [{
+            colorName: "乳白色",
+            colorNum: "rgb(255, 251, 240)"
+          },
+          {
+            colorName: "白色",
+            colorNum: "rgb(255, 255, 2255)"
+          },
+          {
+            colorName: "米白色",
+            colorNum: "rgb(238, 222, 176)"
+          }]
+        },
+        {
+          colorName: "灰色系",
+          colorNum: "rgb(128, 128, 128)",
+          colorList: [{
+            colorName: "浅灰色",
+            colorNum: "rgb(228, 228, 228)"
+          },
+          {
+            colorName: "深灰色",
+            colorNum: "rgb(102, 102, 102)"
+          },
+          {
+            colorName: "灰色",
+            colorNum: "rgb(128, 128, 128)"
+          },
+          {
+            colorName: "银色",
+            colorNum: "rgb(192, 192, 192)"
+          }]
+        },
+        {
+          colorName: "黑色系",
+          colorNum: "rgb(0, 0, 0)",
+          colorList: [{
+            colorName: "黑色",
+            colorNum: "rgb(0, 0, 0)"
+          }]
+        },
+        {
+          colorName: "紫色系",
+          colorNum: "rgb(128, 0, 128)",
+          colorList: [{
+            colorName: "浅紫色",
+            colorNum: "rgb(237, 224, 230)"
+          },
+          {
+            colorName: "深紫色",
+            colorNum: "rgb(67, 6, 83)"
+          },
+          {
+            colorName: "紫红色",
+            colorNum: "rgb(139, 0, 98)"
+          },
+          {
+            colorName: "紫罗兰",
+            colorNum: "rgb(183, 172, 228)"
+          },
+          {
+            colorName: "紫色",
+            colorNum: "rgb(128, 0, 128)"
+          }]
+        },
+        {
+          colorName: "棕色系",
+          colorNum: "rgb(124, 75, 0)",
+          colorList: [{
+            colorName: "巧克力色",
+            colorNum: "rgb(210,105,30)"
+          },
+          {
+            colorName: "标土棕",
+            colorNum: "rgb(115,74,18)"
+          },
+          {
+            colorName: "赭色",
+            colorNum: "rgb(160,82,45)"
+          },
+          {
+            colorName: "乌贼墨棕",
+            colorNum: "rgb(94,38,18)"
+          },
+          {
+            colorName: "沙棕色",
+            colorNum: "rgb(244,164,96)"
+          },
+          {
+            colorName: "栗色",
+            colorNum: "rgb(125, 0, 0)"
+          },
+          {
+            colorName: "棕色",
+            colorNum: "rgb(124, 75, 0)"
+          }]
+        }]
+      };
+      var e = Object.assign;
+      function box() {
+        d = e({}, b, arguments[0]);
+        var f = this;
+        this.index = d.index;
+        this.createElement(function () {
+          f.render()
+        })
+      }
+      box.prototype.createElement = function (f) {
+        this.mainbox = document.createElement("div");
+        this.nav = document.createElement("ul");
+        this.box = document.createElement("div");
+        this.colorlist = document.createElement("ul");
+        $(this.mainbox).addClass("color-group-wrapper color-dropdown-wrapper");
+        $(this.nav).addClass("color-group-panel");
+        $(this.box).addClass("colors-panel");
+        $(this.colorlist).addClass("color-list");
+        $(this.box).html('<p class="colors-panel-title">常用标准颜色</p>');
+        $(this.box).append(this.colorlist);
+        $(this.mainbox).append(this.nav);
+        $(this.mainbox).append(this.box);
+        f && f()
+      };
+      box.prototype.render = function () {
+        var l = this;
+        var mainbox = $(this.mainbox);
+        var n = $(this.nav);
+        var k = $(this.colorlist);
+        var g = $(d.elem);
+        var selectedInput = null;
+        var o = "";
+        var m = "";
+        for (var j = 0; j < d.data.length; j++) {
+          o += '<li class="color-tag" data-index="' + j + '">' + '<a href="#">' + '<div class="color-block" style="background:' + d.data[j]["colorNum"] + ';"></div>' + "<span>" + d.data[j]["colorName"] + "</span>" + "</a>" + "</li>"
+        }
+        n.html(o);
+        k.html(this.createList());
+        $("body").append(this.mainbox);
+        n.find("li.color-tag").hover(function (p) {
+          p.stopPropagation();
+          var i = $(this).attr("data-index");
+          if (i == l.index) {
+            return
+          }
+          l.index = i;
+          k.html(l.createList())
+        });
+        $("body").on("click", ".color-group-panel li.color-tag", function (i) {
+          i.stopPropagation()
+        });
+
+        $("body").on("click", ".color-list li.color-tag", function (q) {
+          q.stopPropagation();
+          var p = $(this).attr("data-index");
+          var selectColorName = d.data[l.index]["colorList"][p]["colorName"];
+          var selectColorBlock = d.data[l.index]["colorList"][p]["colorNum"];
+          var originalText = selectedInput.val();
+          selectedInput.val(selectColorName);
+          if(originalText=="") {
+          // 插入颜色和选中
+          var checkHtml = '<input type="checkbox" checked="checked" name="color" data-color="1" class="select-check">';
+          checkHtml +=' <div class="select-color-block" style="background:'+selectColorBlock+'"></div>';
+          selectedInput.parent().parent().find(".sell-color-checkbox-check-wrap").prepend(checkHtml);
+
+          // 插入下一列
+          var colorListHtml = $(".color-select-list").html();
+          var colorAddHtml = '';
+          if (selectColorName != "") {
+                colorAddHtml += ' <div class="color-select-list-item">';
+                colorAddHtml += '  <div class="sell-color-checkbox-check-wrap">';
+                colorAddHtml += '  </div>';
+            colorAddHtml += '<div class="sell-color-checkbox-item-color">'
+            colorAddHtml += '<input type="text" class="select-color" value="" style="margin: 5px;" readonly="readonly"/>'
+            colorAddHtml += '<input type="text" class="show-color" value="" style="margin: 5px;" placeholder="显示的颜色" />'
+            colorAddHtml += '</div>';
+            colorAddHtml += '</div>';
+            $(".color-select-list").append(colorAddHtml);
+          }    
+        } else {
+          selectedInput.parent().parent().find(".select-color-block").css("background",selectColorBlock);
+        }
+          mainbox.hide();
+          addSkuHtml();
+        });
+        mainbox.css({
+          display: "none"
+        });
+
+        $(document).on("click", ".select-color", function () {
+          //q.stopPropagation();
+          selectedInput = $(this);
+          // if (selectedInput.val() != "") {
+          //     c = selectedInput.val().split(d.range)
+          // }
+          var left = selectedInput.offset().left + d.left;
+          var top = selectedInput.offset().top + selectedInput.get(0).offsetHeight;
+          mainbox.css({
+            position: "absolute",
+            left: left,
+            top: top,
+            display: "block",
+            zIndex: "2999"
+          });
+          $("html").off("click").on("click", function () {
+            mainbox.hide()
+          })
+        });
+
+        $(document).on("click", ".select-check", function (q) {
+          $(this).parent().parent().remove();
+        });
+      };
+      box.prototype.createList = function () {
+        var h = "";
+        var f = this.index;
+        var j = d.data[f]["colorList"];
+        for (var g = 0; g < j.length; g++) {
+          h += '<li class="color-tag" data-index="' + g + '">' + '<a href="#">' + '<div class="color-block" style="background:' + j[g]["colorNum"] + ';"></div>' + "<span>" + j[g]["colorName"] + "</span>" + "</a>" + "</li>"
+        }
+        return h
+      };
+      return box
+    }());
+
+    new SelectColor({
+      elem: ".select-color",
+      range: "|",
+    });
+  </script>
+
+
+</body>
+
+</html>
