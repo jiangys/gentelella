@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <!-- Meta, title, CSS, favicons, etc. -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>印彩云欢迎您 </title>
+      <link href="../yincai/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="../yincai/Content/vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
+      <link href="../yincai/Content/iconfont/iconfont.css" rel="stylesheet" />
+      <link href="../yincai/Content/css/base.css" rel="stylesheet" />
+      <link href="../yincai/Content/css/site.css" rel="stylesheet" />
+      <link href="../yincai/Content/css/shop/common.css" rel="stylesheet" />
+      <link href="../yincai/Content/css/page/footerserver.css" rel="stylesheet" />
+      <link href="../yincai/Content/css/user/common.css" rel="stylesheet" />
+      <style type="text/css">
+            /*空白白色边框*/
+            .user-box {
+                  background: none repeat scroll 0 0 #fff;
+                  border: 1px solid #dfdfdf;
+                  margin-bottom: 15px;
+                  padding: 15px;
+            }
+
+            /*左边样式的变化*/
+            .user-menu .menu_sec li.myinfo {
+                  background: none repeat scroll 0 0 #fff;
+                  border-bottom: 1px solid #e5e5e5;
+                  border-left: 3px solid #e95c00;
+                  border-top: 1px solid #e5e5e5;
+                  padding: 8px 0 8px 37px;
+            }
+
+            .user-box .box-bd {
+                  border: 0 none;
+                  height: 80px;
+                  margin: 30px;
+            }
+
+            .user-box .uc-avatar {
+                  border-radius: 40px;
+                  float: left;
+                  height: 80px;
+                  margin-right: 30px;
+                  width: 80px;
+            }
+
+            .user-box .uc-welcome {
+                  color: #6d6d6d;
+                  font-size: 24px;
+                  font-weight: 400;
+                  line-height: 1.25;
+                  margin: 0;
+            }
+
+            .user-box .uc-setInfo {
+                  margin-top: 20px;
+            }
+
+            .user-box .uc-info-detail {
+                  margin: 0;
+                  padding: 10px 0;
+                  font-size: 12px;
+                  line-height: 1.75;
+                  color: #6d6d6d;
+            }
+
+            .uuser-box .uc-welcome .user-name {
+                  color: #000;
+                  margin-right: 10px;
+            }
+
+            .user-box .uc-info {
+                  margin-top: 20px;
+            }
+
+
+            .jifen-info h4 {
+                  padding-top: 2px;
+            }
+
+            .order-doing h4 {
+                  padding-top: 5px;
+            }
+
+            .container-left {
+        
+        width:650px;
+        }
+
+        .container-right {
+            width: 220px;
+            min-height: 400px;
+            padding: 0 20px;
+            border-color: #e5e5e5;
+            border-image: none;
+            border-style: solid;
+            border-width: 1px;
+        }
+            .container-right .refund-content {
+            margin-top:20px;
+            }
+
+            .required:after {
+            color: #ed1c24;
+            content: " *";
+        }
+      </style>
+</head>
+
+<body>
+      <div class="wrapper">
+            <div class="container body-content">
+                  <div class="user-content clearfix">
+                        <div class="user-menu ">
+                              <div class="menu-wrap">
+                                    <div class="user-title">
+                                          <h4>我的印彩云</h4>
+                                    </div>
+                                    <div class="menu_sec">
+                                          <div class="menu_title">个人中心</div>
+                                          <ul>
+                                                <li class="myinfo">
+                                                      <a href="/user/index">我的首页</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="menu_sec">
+                                          <div class="menu_title">交易中心</div>
+                                          <ul>
+                                                <li class="shoporder">
+                                                      <a href="/user/order">我的订单</a>
+                                                </li>
+                                                <li class="aftersale">
+                                                      <a href="/user/refundlist">售后记录</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                                    <div class="menu_sec">
+                                          <div class="menu_title">账户管理</div>
+                                          <ul>
+                                                <li class="address">
+                                                      <a href="/user/address">地址管理</a>
+                                                </li>
+                                                <li class="password">
+                                                      <a href="/user/changepassword">修改密码</a>
+                                                </li>
+                                          </ul>
+                                    </div>
+                              </div>
+                        </div>
+
+                        <div class="user-detail">
+                              <div class="user-title">
+                                    <h5 class="fl">申请发票</h5>
+                              </div>
+                              <div class="user-body">
+                                    <div class="container-left fl">
+                                          <form action="/User/refund/10642" class="form-horizontal" data-ajax="true" data-ajax-method="Post" data-ajax-success="onSuccessed" id="form0" method="post" role="form" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="_YILlCZCkLXAPjs6gHx68x8KJT1dgF6uOSjLuwUFMRn4DxsA5EARRvAeMM0hx8d6XoKE-jmsS3IKYm5pyGm2CoeH_Dzf_TzabrsC0m4NrJ01"><input data-val="true" data-val-number="字段 OrderID 必须是一个数字。" data-val-required="OrderID 字段是必需的。" id="OrderID" name="OrderID" type="hidden" value="10642">           
+                                                  <div class="form-group">
+                                                          <label class="col-md-3 control-label">发票类型</label>
+                                                          <div class="col-md-7">
+                                                            <label class="radio-inline">
+                                                                  <input type="radio" name="InvoiceTypeRadio"  value="0"> 电子发票
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                  <input type="radio" name="InvoiceTypeRadio"  value="1"> 纸质发票
+                                                                </label>
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                            <label class="col-md-3 control-label required">抬头名称</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="InvoiceTitle" name="InvoiceTitle" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label required">税号</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">单位地址</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">电话号码</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">开户银行</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">银行账号</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label required">应税劳务</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="" placeholder="如：服装、文具、餐饮">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label required">发票金额</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label required">发票数量</label>
+                                                            <div class="col-md-7">
+                                                                <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label required">发票计量单位</label>
+                                                            <div class="col-md-7">
+                                                                  <select class="form-control col-md-7 col-xs-12" data-val="true" id="InvoiceType" name="InvoiceType" required="required">
+                                                                  <option value="套">套</option>
+                                                                  <option value="件">件</option>
+                                                                  <option value="匹">匹</option>
+                                                                  <option value="对">对</option>
+                                                                  </select>
+                                                              </div>
+                                                        </div>
+                                                    
+                                                        <div class="deliveryInfo" style="display: none;">
+                                                            <div class="form-group">
+                                                                  <label class="col-md-3 control-label required">收货地址</label>
+                                                                  <div class="col-md-7">
+                                                                      <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label class="col-md-3 control-label required">收货人</label>
+                                                                  <div class="col-md-7">
+                                                                      <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label class="col-md-3 control-label required">收货人手机号</label>
+                                                                  <div class="col-md-7">
+                                                                      <input class="form-control" id="ExpressNo" name="ExpressNo" type="text" value="">
+                                                                  </div>
+                                                              </div>
+                                                            <div class="form-group">
+                                                                  <label class="col-md-3 control-label">快递名称</label>
+                                                                  <div class="col-md-7">
+                                                                      <select class="form-control col-md-7 col-xs-12 valid" data-val="true" id="ExpressName" name="ExpressName">
+                                                                          <option value="申通快递">申通快递</option>
+                                                                          <option value="圆通快递">圆通快递</option>
+                                                                      </select>
+                                                                  </div>
+                                                              </div>
+                                                        </div>
+                                        
+                                                   
+                                                      <div class="form-group">
+                                                          <label class="col-md-3 control-label">备注</label>
+                                                          <div class="col-md-7">
+                                                              <textarea class="form-control" cols="20" id="RefundDesc" name="RefundDesc" rows="2"></textarea>
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <div class="col-md-offset-3 col-md-7">
+                                                              <input type="submit" value="提交" class="btn btn-default">
+                                                          </div>
+                                                      </div>
+                                          </form>    </div>
+
+                              </div>
+
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+
+
+      <script src="../yincai/Scripts/jquery-1.10.2.js"></script>
+      <script src="../yincai/Scripts/bootstrap.min.js"></script>
+      <script src="../yincai/Content/js/jquery_lazyload-1.9.3/jquery.lazyload.min.js"></script>
+      <script src="../yincai/Content/js/code/com.js"></script>
+
+
+      <script src="../yincai/Content/js/shop/common.js"></script>
+      <script src="../yincai/Content/js/shop/addCart.js"></script>
+      <script src="../yincai/Content/js/shop/product.js"></script>
+
+      <script src='../vendors/zoom-master/jquery.zoom.js'></script>
+
+      <script type="text/javascript">
+            $(function () {
+            $('input:radio:first').attr('checked', 'checked');
+
+            $("input[name='InvoiceTypeRadio']").on("click",function () {
+                if($("input[name='InvoiceTypeRadio']:checked").val()=="0"){
+                  $(".deliveryInfo").hide();
+                } else {
+                  $(".deliveryInfo").show();
+                }
+            })
+        })
+      </script>
+
+</body>
+
+
+</html>

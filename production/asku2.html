@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gentelella Alela! | </title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link href="../build/css/custom_change.css" rel="stylesheet">
+
+  <link href="../yincai/Content/css/shop/selectcolor.css" rel="stylesheet" />
+
+  <style type="text/css">
+    .flat {
+      padding-right: 10px;
+    }
+
+    #skulist .hide {
+      display: none !important;
+    }
+
+    .product-radio,
+    .product-checkbox {
+      margin-top: 8px;
+    }
+
+    .product-radio .radio-item,
+    .product-checkbox .checkbox-item {
+
+      margin-right: 10px;
+    }
+
+    .sku-fill {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+
+    .size-list {
+      list-style: none;
+      padding: 0 10px;
+    }
+
+    .size-item .checkbox-item {
+      display: block;
+      width: 160px;
+      padding: 0 10px;
+      line-height: 30px;
+      font-size: 12px;
+      text-decoration: none;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script>
+
+
+    function addSkuHtml() {
+      // 缓存当前已经输入的价格和库存
+      var skusInput = [];
+      $('#skulist tr').each(function () {
+        skusInput.push({
+          "Properties": $(this).find('.sku-item-color').attr('data-color') + ":" + $(this).find('.sku-item-size').attr('data-size'),
+          "Price": $(this).find('.sku-item-price input').val(),
+          "Stock": $(this).find('.sku-item-stock input').val()
+        });
+      });
+
+      var skuHtml = ''
+      $('#skulist').html(skuHtml);
+
+      var currentSizeCount = 0;
+      var sizeCount = 0;
+      $(":checkbox[name='size']:checked").each(function () {
+        sizeCount++;
+      });
+
+      if (sizeCount == 0) {
+        return;
+      };
+
+      $(":checkbox[name='color']:checked").each(function () {
+        var selectColorId = $(this).val();
+        var selectColorName = $(this).attr('data-name');
+        currentSizeCount = 0;
+        $(":checkbox[name='size']:checked").each(function () {
+          currentSizeCount++;
+          var price = 0;
+          var stock = 0;
+          var properties = selectColorId + ":" + $(this).val();
+          // 获取当前已经输入的价格和库存
+          $.each(skusInput, function (index, data) {
+            if (data.Properties == properties) {
+              price = data.Price;
+              stock = data.Stock;
+            }
+          });
+
+          skuHtml += '<tr>';
+          if (currentSizeCount > 1) {
+            skuHtml += '   <td class="sku-item-color hide" data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          } else {
+            skuHtml += '   <td class="sku-item-color" rowspan=' + sizeCount + ' data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          }
+          skuHtml += '   <td class="sku-item-size" data-size="' + $(this).val() + '">' + $(this).attr('data-name'); +'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="' + price + '" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="' + stock + '" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '</tr>';
+        });
+      });
+      $('#skulist').html(skuHtml);
+    };
+
+    $(function () {
+      $("#product-submit").click(function () {
+        var skus = [];
+        var productAttr = [];
+        var colorid = $("#colorlist").attr("data-id");
+        var sizeid = $("#sizelist").attr("data-id");
+        $('#skulist tr').each(function () {
+          var color = $(this).find('.sku-item-color').attr('data-color');
+          var size = $(this).find('.sku-item-size').attr('data-size');
+          // 插入SKU
+          skus.push({
+            "Properties": colorid + ":" + color + ";" + sizeid + ":" + size,
+            "Price": $(this).find('.sku-item-price input').val(),
+            "Stock": $(this).find('.sku-item-stock input').val()
+          });
+        });
+
+        // 插入颜色
+        $(":checkbox[name='color']:checked").each(function () {
+          productAttr.push({
+            "AttrID": colorid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+        // 插入尺码
+        $(":checkbox[name='size']:checked").each(function () {
+          productAttr.push({
+            "AttrID": sizeid,
+            "AttrValueID": $(this).val()
+          });
+        });
+
+      });
+
+      // 批量填充价格和库存
+      $("#skuFillSubmit").click(function () {
+        var price = $("#skuFillPrice").val();
+        var stock = $("#skuFillStock").val();
+        $('#skulist tr').each(function () {
+          if (price.length != 0) {
+            $(this).find('.sku-item-price input').val(price);
+          }
+          if (stock.length != 0) {
+            $(this).find('.sku-item-stock input').val(stock);
+          }
+        });
+
+      });
+
+    });
+
+  </script>
+
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+
+            <form id="product-form" data-parsley-validate class="form-horizontal form-label-left">
+
+
+              <!--销售信息-->
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>销售信息 <small>没有的颜色和尺码，请到颜色和尺码管理中添加</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-2 col-sm-2 col-xs-12" id="sizelist"
+                        data-id="2">颜色</label>
+                      <div class="col-md-10 col-sm-10 col-xs-12 color-desc">
+                        选择标准颜色可增加搜索/导购机会，标准颜色还可填写颜色备注信息（偏深、偏亮等）
+                        <div class="product-checkbox">
+                          <div style="width: 60px;float: left;padding: 0 10px;line-height: 35px;">红色系</div>
+                          <div style="width: 90%;float: left;">
+                            <ul class="size-list">
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="15" data-name="均码" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1" class="caname">上黑下红1111</span>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="127" data-name="6XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 6XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div style="width: 80px;float: left;padding: 0 10px;line-height: 40px;">红色系</div>
+                          <div style="width: 90%;float: left;">
+                            <ul class="size-list">
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="15" data-name="均码" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1">上黑下红</span> <a href="javascript:;" id="a1" onclick="cg(this)"><i
+                                      class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="127" data-name="6XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1">上黑下红</span> <a href="javascript:;" id="a1" onclick="cg(this)"><i
+                                      class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div style="width: 80px;float: left;padding: 0 10px;line-height: 40px;">红色系</div>
+                          <div style="width: 90%;float: left;">
+                            <ul class="size-list">
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="15" data-name="均码" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1">上黑下红</span> <a href="javascript:;" id="a1" onclick="cg(this)"><i
+                                      class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="127" data-name="6XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1">上黑下红</span> <a href="javascript:;" id="a1" onclick="cg(this)"><i
+                                      class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> <span id="it1">上黑下红</span> <a
+                                    href="javascript:;" id="a1" onclick="cg(this)"><i class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div style="width: 80px;float: left;padding: 0 10px;line-height: 30px;">红色系</div>
+                          <div style="width: 90%;float: left;">
+                            <ul class="size-list">
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="15" data-name="均码" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size">
+                                  <span id="it1">上黑下红</span> <a href="javascript:;" id="a1" onclick="cg(this)"><i
+                                      class="fa fa-edit"></i> </a>
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="127" data-name="6XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 6XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                                </span>
+                              </li>
+                              <li class="size-item left" data-index="0">
+                                <span class="checkbox-item">
+                                  <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                    onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+
+
+                        </div>
+
+
+                      </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-2 col-sm-2 col-xs-12" id="sizelist"
+                        data-id="2">尺码</label>
+                      <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="product-checkbox">
+                          <ul class="size-list">
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="15" data-name="均码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 均码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="127" data-name="6XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 6XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="126" data-name="5XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 5XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="125" data-name="4XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 4XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="124" data-name="3XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 3XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="123" data-name="2XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 2XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="115" data-name="XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="2" data-name="S" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> S
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="3" data-name="M" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> M
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="4" data-name="L" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> L
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="5" data-name="XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="6" data-name="2XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 2XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="7" data-name="3XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 3XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="8" data-name="4XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 4XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="13" data-name="5XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 5XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="14" data-name="6XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 6XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="116" data-name="4码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 4码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="117" data-name="6码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 6码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="118" data-name="8码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 8码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="142" data-name="9码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 9码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="119" data-name="10码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 10码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="143" data-name="11码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 11码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="120" data-name="12码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 12码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="144" data-name="13码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 13码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="121" data-name="14码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 14码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="145" data-name="15码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 15码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="122" data-name="16码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 16码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="146" data-name="17码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 17码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="147" data-name="19码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 19码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="1" data-name="男XS" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男XS
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="91" data-name="男S" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男S
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="92" data-name="男M" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男M
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="93" data-name="男L" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男L
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="94" data-name="男XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="95" data-name="男2XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男2XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="96" data-name="男3XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男3XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="97" data-name="男4XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 男4XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="85" data-name="女款S" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款S
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="86" data-name="女款M" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款M
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="87" data-name="女款L" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款L
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="88" data-name="女款XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="89" data-name="女款2XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款2XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="90" data-name="女款3XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 女款3XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="51" data-name="童装" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童装
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="31" data-name="童S" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童S
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="32" data-name="童M" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童M
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="33" data-name="童L" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童L
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="34" data-name="童XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="35" data-name="童2XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童2XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="36" data-name="童3XL" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 童3XL
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="52" data-name="成人均码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 成人均码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="53" data-name="成人加大码" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 成人加大码
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="258" data-name="180cm*30cm" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 180cm*30cm
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="259" data-name="190cm*56cm" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 190cm*56cm
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="260" data-name="195cm*58cm" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 195cm*58cm
+                              </span>
+                            </li>
+                            <li class="size-item left" data-index="0">
+                              <span class="checkbox-item">
+                                <input type="checkbox" name="size" value="261" data-name="210cm*33cm" class="flat"
+                                  onclick="addSkuHtml()" data-parsley-multiple="size"> 210cm*33cm
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-2 col-sm-2 col-xs-12">SKU组合</label>
+                      <div class="col-md-10 col-sm-10 col-xs-12">
+
+                        <div class="form-inline sku-fill">
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillPrice" placeholder="价格">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" class="form-control" id="skuFillStock" placeholder="库存">
+                          </div>
+                          <button type="button" class="btn btn-default" id="skuFillSubmit">批量填充</button>
+                        </div>
+
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>颜色</th>
+                              <th>尺码</th>
+                              <th>价格</th>
+                              <th>库存</th>
+                            </tr>
+                          </thead>
+                          <tbody id="skulist">
+
+                            <tr>
+                              <td class="sku-item-color" data-color="1">红色</td>
+                              <td class="sku-item-size" data-size="5">L</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td class="sku-item-color" data-color="2">黑色</td>
+                              <td class="sku-item-size" data-size="6">XL</td>
+                              <td class="sku-item-price">
+                                <input type="number" value="0" name="price" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                              <td class="sku-item-stock">
+                                <input type="number" value="0" name="stock" for="number" required="required"
+                                  data-parsley-required-message="请输入数字">
+                              </td>
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+
+  <!-- Parsley -->
+  <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+  <script src="../yincai/Scripts/jquery-1.10.2.js"></script>
+  <script>
+
+    function addSkuHtml() {
+      // 缓存当前已经输入的价格和库存
+      var skusInput = [];
+      $('#skulist tr').each(function () {
+        skusInput.push({
+          "Properties": $(this).find('.sku-item-color').attr('data-color') + ":" + $(this).find('.sku-item-size').attr('data-size'),
+          "Price": $(this).find('.sku-item-price input').val(),
+          "Stock": $(this).find('.sku-item-stock input').val()
+        });
+      });
+
+      var skuHtml = ''
+      $('#skulist').html(skuHtml);
+
+      var currentSizeCount = 0;
+      var sizeCount = 0;
+      $(":checkbox[name='size']:checked").each(function () {
+        sizeCount++;
+      });
+
+      if (sizeCount == 0) {
+        return;
+      };
+
+      $(":checkbox[name='color']:checked").each(function () {
+        var selectColorId = $(this).attr('data-color');
+        var selectColorName = $(this).parent().parent().find(".select-color").val();
+        var showColorName = $(this).parent().parent().find(".show-color").val();
+        if (showColorName != '') {
+          selectColorName = showColorName;
+        }
+        currentSizeCount = 0;
+        $(":checkbox[name='size']:checked").each(function () {
+          currentSizeCount++;
+          var price = 0;
+          var stock = 0;
+          var properties = selectColorId + ":" + $(this).val();
+          // 获取当前已经输入的价格和库存
+          $.each(skusInput, function (index, data) {
+            if (data.Properties == properties) {
+              price = data.Price;
+              stock = data.Stock;
+            }
+          });
+
+          skuHtml += '<tr>';
+          if (currentSizeCount > 1) {
+            skuHtml += '   <td class="sku-item-color hide" data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          } else {
+            skuHtml += '   <td class="sku-item-color" rowspan=' + sizeCount + ' data-color="' + selectColorId + '">' + selectColorName + '</td>';
+          }
+          skuHtml += '   <td class="sku-item-size" data-size="' + $(this).val() + '">' + $(this).attr('data-name'); +'</td>';
+          skuHtml += '   <td class="sku-item-price"><input type="number" value="' + price + '" name="price" for="number" required="required" min="1" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '   <td class="sku-item-stock"><input type="number" value="' + stock + '" name="stock" for="number" required="required" data-parsley-required-message="请输入数字"></td>';
+          skuHtml += '</tr>';
+        });
+      });
+      $('#skulist').html(skuHtml);
+    };
+
+    function change(obj) {
+      var xg = $(obj).html();
+      if (xg == '修改') {
+        $('.edit').each(function () {
+          var old = $(this).parent().find('p').html();
+          $(this).html("<input type='text' name='editname' class='text' value=" + old + " >");
+        })
+        $(obj).html('保存');
+      } else if (xg == '保存') {
+        $('input[name=editname]').each(function () {
+          var old = $(this).html();
+          var newfont = $(this).parent('td').parent('tr').children().find('input').val();
+          $(this).parent('td').html(newfont);
+        })
+        $(obj).html('修改');
+      }
+    }
+
+    function cg(obj) {
+      alert('dddd');
+      // var o = document.getElementById("it" + obj.id.toString().substr(1));
+      // if (o.childNodes[0].value) {
+      //   o.innerHTML = o.childNodes[0].value;
+      // } else {
+      //   o.innerHTML = "<input type='text' value='" + document.getElementById("it" + obj.id.toString().substr(1)).innerHTML + "' />";
+      // }
+    }
+
+    // $(".caname").click(function () {
+    //   var td = $(this);
+    //   var txt = $(this).text();
+    //   var input = $("<input type='text'value='" + txt + "' name='coin' style='width: 100px; height: 30px;'/>");
+    //   td.html(input);
+
+    //   input.trigger("focus");
+    //   input.blur(function () {
+    //     var newtxt = $(this).val();
+    //     if (newtxt != txt) {
+    //       td.html(newtxt);
+    //     }
+    //     else {
+    //       td.html(newtxt);
+    //     }
+    //   });
+    // });
+    $(function () {
+      //获取class为caname的元素 
+      $(".caname").click(function () {
+        var td = $(this);
+        var txt = td.text();
+        var input = $("<input type='text'value='" + txt + "' style='width: 100px; height: 30px;'/>");
+        td.html(input);
+        input.click(function () { return false; });
+        //获取焦点 
+        input.trigger("focus");
+        //文本框失去焦点后提交内容，重新变为文本 
+        input.blur(function () {
+          var newtxt = $(this).val();
+          //判断文本有没有修改 
+          if (newtxt != txt) {
+            td.html(newtxt);
+          }
+          else {
+            td.html(newtxt);
+          }
+        });
+      });
+    });
+
+  </script>
+
+
+</body>
+
+</html>

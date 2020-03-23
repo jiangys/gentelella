@@ -405,6 +405,10 @@
       $(":checkbox[name='color']:checked").each(function () {
         var selectColorId = $(this).attr('data-color');
         var selectColorName = $(this).parent().parent().find(".select-color").val();
+        var showColorName = $(this).parent().parent().find(".show-color").val();
+        if(showColorName!=''){
+          selectColorName = showColorName;
+        }
         currentSizeCount = 0;
         $(":checkbox[name='size']:checked").each(function () {
           currentSizeCount++;
@@ -441,9 +445,8 @@
     var SelectColor = (function () {
       var d = null;
       var c = [];
-      var b = {
+      var colordata = {
         elem: ".select-color",
-        range: "|",
         left: 0,
         index: 0,
         data: [{
@@ -549,7 +552,7 @@
       };
       var e = Object.assign;
       function box() {
-        d = e({}, b, arguments[0]);
+        d = e({}, colordata, arguments[0]);
         var f = this;
         this.index = d.index;
         this.createElement(function () {
@@ -574,19 +577,18 @@
       box.prototype.render = function () {
         var l = this;
         var mainbox = $(this.mainbox);
-        var n = $(this.nav);
+        var nav = $(this.nav);
         var k = $(this.colorlist);
         var g = $(d.elem);
         var selectedInput = null;
-        var o = "";
-        var m = "";
+        var colorTagHtml = "";
         for (var j = 0; j < d.data.length; j++) {
-          o += '<li class="color-tag" data-index="' + j + '">' + '<a href="#">' + '<div class="color-block" style="background:' + d.data[j]["colorNum"] + ';"></div>' + "<span>" + d.data[j]["colorName"] + "</span>" + "</a>" + "</li>"
+          colorTagHtml += '<li class="color-tag" data-index="' + j + '">' + '<a href="#">' + '<div class="color-block" style="background:' + d.data[j]["colorNum"] + ';"></div>' + "<span>" + d.data[j]["colorName"] + "</span>" + "</a>" + "</li>"
         }
-        n.html(o);
+        nav.html(colorTagHtml);
         k.html(this.createList());
         $("body").append(this.mainbox);
-        n.find("li.color-tag").hover(function (p) {
+        nav.find("li.color-tag").hover(function (p) {
           p.stopPropagation();
           var i = $(this).attr("data-index");
           if (i == l.index) {
@@ -639,9 +641,6 @@
         $(document).on("click", ".select-color", function () {
           //q.stopPropagation();
           selectedInput = $(this);
-          // if (selectedInput.val() != "") {
-          //     c = selectedInput.val().split(d.range)
-          // }
           var left = selectedInput.offset().left + d.left;
           var top = selectedInput.offset().top + selectedInput.get(0).offsetHeight;
           mainbox.css({
@@ -673,8 +672,7 @@
     }());
 
     new SelectColor({
-      elem: ".select-color",
-      range: "|",
+      elem: ".select-color"
     });
   </script>
 
